@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CinSense</title>
+	<link rel="icon" type="image/png" href=""/>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/stylemain.css">
+</head>
+<body>
+	<header class="head"><h1 id="minititle">CinSense</h1>
+	<div class="decline col-12 col-lg-12"></div>
+	<nav class="main items">
+		<a class="simple" href="index.html"><span data-hover="Home">Home</span></a>
+		<a class="simple" href="films.html" ><span data-hover="Films">Films</span></a>
+		<a class="simple" href="recommend.html"><span data-hover="Recommendation">Recommendation</span></a>
+		<a class="simple active" href="account.html"><span data-hover="Account">Account</span></a>
+		<a class="simple" href="about.html"><span data-hover="About">About</span></a>
+	</nav></header>
+	<nav class="navbar mb-4">
+	  <a class="navbar-brand simple" href="index.html">Home</a>
+	  <button class="navbar-toggler first-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent20"
+	    aria-controls="navbarSupportedContent20" aria-expanded="false" aria-label="Toggle navigation">
+	    <div class="animated-icon1"><span></span><span></span><span></span></div>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent20">
+	    <ul class="navbar-nav mr-auto">
+	      <li class="nav-item">
+	        <a class="simple nav-link " href="films.html">Films</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link simple" href="recommend.html">Recommendation</a>
+	      </li>
+	      <li class="nav-item active">
+	        <a class="nav-link simple" href="account.html">Account</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link simple" href="about.html">About</a>
+	      </li>
+	    </ul>
+	  </div>
+	</nav>
+	<section class="offlineUser col-12 col-lg-9">
+		<!-- <div></div> -->
+		<!-- <div></div> -->
+		<h1 id="beatle">Offline User Detected</h1>
+		<p class="seethrough">you need to login or register in order to access this page</p>
+		<div id="registerButton" onclick="openRegister()">Register</div>
+		<div id="loginButton" onclick="openLogin()">Login</div>
+		<div id="registerForm" class="col-12 col-lg-4 dontshow">
+			
+  			<form action="/">
+   				<label for="username">Username</label>
+  		  		<input type="text" id="username" name="Username" placeholder="Your username">
+
+    			<label for="email">Email</label>
+    			<input type="text" id="email" name="email" placeholder="Your email">
+
+    			<label for="password">Password</label>
+   				<input type="password" id="password" name="password" placeholder="Your password">
+  
+    			<input type="submit" value="Register">
+    			<label for="login" onclick="openLogin()" class="right1">Login instead</label>
+ 			</form>
+		</div>
+		<div id="loginForm" class="col-12 col-lg-4 dontshow">
+
+  			<form action="/action_page.php">
+   				<label for="username">Username/Email</label>
+  		  		<input type="text" id="username" name="Username" placeholder="Your username or email">
+
+    			<label for="password">Password</label>
+   				<input type="password" id="password" name="password" placeholder="Your password">
+  
+    			<input type="submit" value="Login">
+    			<label for="login" onclick="openRegister()" class="right1">Register instead</label>
+ 			</form>
+		</div>
+	</section>
+	<section class="onlineUser"></section>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+	<script src="js/script.js"></script>
+</body>
+</html>
