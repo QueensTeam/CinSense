@@ -335,14 +335,14 @@ img.lhp{
 img.mov{
 	margin: 2%;
 	opacity:0.8;
-	/*border: 7px solid transparent;*/
+	border: 7px solid transparent;
 	padding:0;
 	display:inline-block;
 	/*float:left;*/
 }
 img.mov:hover{
 	opacity:1;
-	/*border:solid 7px  #DCD348;*/
+	border:solid 7px #C02323;
 	padding:0;
 }
 .text{
@@ -770,6 +770,7 @@ h1 #title {
 	background-color:pink;
 	background-color: #F3DE8A;
 	background-color: #f2f2f2;
+
 	/*box-shadow:1px 1px 1px gray;*/
 	position:static;
 }
@@ -781,12 +782,38 @@ h1 #title {
 	display:inline-block;
 	margin:1%;
 	background-color:white;
-	text-align:center;
+	/*text-align:center;*/
 	/*left:17%;*/
 	width:13vw;
 	/*height:35px;*/
 	font-size:20px;
+	text-align:center;
 	font-family: 'Bebas Neue';
+}
+.moviefilters div select{
+	/*float:right;*/
+	/*top:50%;*/
+	/*position:absolute;*/
+	font-family: "Segoe UI";
+	font-size:15px;
+	border:none;
+	display:block;
+	margin:0 auto;
+	text-align:center;
+	width:7vw;
+	border-radius:5px;
+	/*background-color:#C02323;*/
+}
+.moviefilters div:hover{
+	background-color:#C02323;
+	color:black;
+}
+.moviefilters div select:hover{
+	background-color:white;
+}
+.moviefilters div select:active .moviefilters div select:visited{
+	/*background-color: red;*/
+	border:none;
 }
 
 #okbutton{
@@ -794,8 +821,18 @@ h1 #title {
 	font-family:'Bebas Neue';
 	font-size:20px;
 	/*color: #C02323;*/
+	margin:0 auto;
+	/*margin-top:50%;*/
+	border: none;
+	text-align:center;
 	color:red;
 	border-radius:5px;
+	/*margin-bottom:2%;*/
+	display:inline;
+	/*float:right;*/
+	/*position:sticky;*/
+
+	/*top:3%;*/
 }
 #okbutton:hover{
 	cursor:pointer;
@@ -964,4 +1001,47 @@ input[type=submit]:hover, #registerButton:hover, #loginButton:hover {
 	/*color:white;*/
 	/*float:right;*/
 	text-align:right;
+}
+#userStateOffline {
+	left:90%;
+	position:absolute;
+	top:25%;
+}
+#userStateOffline a{
+	color: #C02323;
+	color: red;
+	font-style: italic;
+	font-family: "Segoe UI";
+}
+#userStateOffline a:hover{
+	color:black;
+	font-style:normal;
+	text-decoration: none;
+}
+#userStateOffline .offlineComment { display: none; }
+#userStateOffline:hover .offlineTitle { display: none; }
+#userStateOffline:hover .offlineComment { 
+	display: inline-block; 
+	left:85%;
+	/*font-family:'Antonio';*/
+}
+
+#contacts{
+	/*position:absolute;*/
+	font-size:30px;
+	/*left:70%;*/
+	margin:0 30% 0 0;
+	/*float:right;*/
+	text-align:right;
+}
+#contacts a{
+	/*color: red;*/
+	margin:1%;
+	color:#C02323;
+	/*text-shadow:0.5px 1px 2px gray;*/
+}
+#contacts a:hover{
+	text-decoration: none;
+	color:black;
+	font-size:32px;
 }
