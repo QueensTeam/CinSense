@@ -10,7 +10,7 @@ import json
 load_dotenv()
 
 def getAllMovies():
-    response = requests.get("https://api.themoviedb.org/3/discover/movie?api_key=" + os.environ.get('TMDB_API_KEY') + "&sort_by=popularity.desc&page=1")
+    response = requests.get("https://api.themoviedb.org/3/discover/movie?api_key=" + os.environ.get('TMDB_API_KEY') + "&sort_by=release_date.desc&page=1")
     return response.json()
 
 def parseMovies():
@@ -23,15 +23,9 @@ def parseMovies():
         release_year = str(movie['release_date'][0:4])
         vote_avg = str(movie['vote_average'])
         genres = movie['genre_ids'][0]
-        print(title + " " + str(genres) + "\n")
-
-parseMovies()
 
 def getGenres():
     response = requests.get("https://api.themoviedb.org/3/genre/movie/list?api_key=" + os.environ.get('TMDB_API_KEY') + "&language=en-US")
-    print(response.json())
-
-getGenres()
 
 def connectToDB():
     connection = pymysql.connect(host='localhost', user='root', password='', database='cinsense', charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
@@ -92,3 +86,8 @@ def recommend():
 @app.route("/filmPage.html")
 def indFilm():
     return render_template("filmPage.html")
+
+@app.route("/getAll")
+def getAll():
+    movies = getAllMovies()["results"]
+    return movies
