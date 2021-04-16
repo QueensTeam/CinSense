@@ -19,6 +19,7 @@ def parseMovies(page):
     parsed_movies = []
     for movie in movies:
         parsed_movie = {}
+        movie_id = str(movie['id'])
         title = movie['title']
         if movie['poster_path']:
             poster = movie['poster_path'][1:]
@@ -29,7 +30,7 @@ def parseMovies(page):
         vote_avg = str(movie['vote_average'])
         vote_count = str(movie['vote_count'])
         genres = movie['genre_ids']
-        for variable in ["title", "overview", "release_year", "vote_avg", "genres", "vote_count"]:
+        for variable in ["movie_id", "title", "overview", "release_year", "vote_avg", "genres", "vote_count"]:
             parsed_movie[variable]=eval(variable)
         if 'poster' in locals():
             parsed_movie["poster"] = poster

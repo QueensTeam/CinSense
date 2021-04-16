@@ -2,6 +2,7 @@ $(document).ready(function () {
 
     $.get("/getAll", {}).done(function(data) {
       var movies = JSON.parse(data);
+      console.log(movies);
       movies.forEach(addMovie);
     });
 
@@ -19,6 +20,20 @@ $(document).ready(function () {
   });
 });
 
+function searchForMovies(){
+  var genre = document.getElementById("genre").value;
+  var decade = document.getElementById("decade").value;
+  var voteavg = document.getElementById("average").value;
+  var votecnt = document.getElementById("votecount").value;
+  console.log(decade + " " + voteavg + " " + votecnt);
+  url = "/genre/" + genre;
+  $.get(url, {}).done(function(data) {
+    var movies = JSON.parse(data);
+    document.getElementById("gallery").innerHTML = ""
+    console.log(movies);
+    movies.forEach(addMovie);
+  });
+}
 
 
 function addMovie(value){
