@@ -12,6 +12,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="../static/css/stylemain.css">
+
+	
 </head>
 <body>
 	<!-- <div class="content"> -->
@@ -120,6 +122,7 @@
 		</section>
 
 		<section class="photogallery col-11 col-sm-11 col-md-11 col-lg-9">
+			<div id = "gallery"></div>
 		<!-- <section class="photosec col-3 col-md-3 col-lg-2"> -->
 			<span >
 				<img onclick="transitionToPage('filmPage.html')" src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/q4UEd8BL74zVsOOaJkKVMLMmdTg.jpg" alt="" title="42nd Street (1933)" class="col-12 col-lg-2 mov"/>
@@ -187,6 +190,18 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-	<script src="../static/js/script.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>	
+<script src="../static/js/script.js"></script>
+	<script>
+		$(document).ready(function() {
+			$.get("/getAll", {}).done(function(data) {
+				var movies = JSON.parse(data);
+				movies.forEach(addMovie);
+			});
+		});
+		function addMovie(value){
+			$("#gallery").append("<img src=\"https://image.tmdb.org/t/p/w600_and_h900_bestv2/" + value.poster + "\" alt=\"\" title=" + value.title + "\" class=\"col-12 col-lg-2  mov\"/>");
+		}
+	</script>
 </body>
 </html>

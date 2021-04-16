@@ -10,19 +10,36 @@ import json
 load_dotenv()
 
 def getAllMovies():
-    response = requests.get("https://api.themoviedb.org/3/discover/movie?api_key=" + os.environ.get('TMDB_API_KEY') + "&sort_by=release_date.desc&page=1")
+    response = requests.get("https://api.themoviedb.org/3/discover/movie?api_key=" + os.environ.get('TMDB_API_KEY') + "&sort_by=popularity.desc&page=1")
     return response.json()
+
 
 def parseMovies():
     movies = getAllMovies()["results"]
+    parsed_movies = []
     for movie in movies:
+        parsed_movie = {}
         title = movie['title']
-        poster = "https://image.tmdb.org/t/p/w600_and_h900_bestv2" + movie['poster_path']
-        backdrop = "https://image.tmdb.org/t/p/w600_and_h900_bestv2" + movie['backdrop_path']
+        print(title)
+        if movie['poster_path']:
+            poster = movie['poster_path'][1:]
+        if movie['backdrop_path']:
+            backdrop = movie['backdrop_path'][1:]
         overview = movie['overview']
         release_year = str(movie['release_date'][0:4])
         vote_avg = str(movie['vote_average'])
-        genres = movie['genre_ids'][0]
+        genres = movie['genre_ids']
+        for variable in ["title", "overview", "release_year", "vote_avg", "genres"]:
+            parsed_movie[variable]=eval(variable)
+        if 'poster' in locals():
+            parsed_movie["poster"] = poster
+        if 'backdrop' in locals():
+            parsed_movie["backdrop"] = backdrop
+        parsed_movies.append(parsed_movie.copy())
+        print("added " + title)
+    return parsed_movies
+
+parseMovies()
 
 def getGenres():
     response = requests.get("https://api.themoviedb.org/3/genre/movie/list?api_key=" + os.environ.get('TMDB_API_KEY') + "&language=en-US")
@@ -89,5 +106,5 @@ def indFilm():
 
 @app.route("/getAll")
 def getAll():
-    movies = getAllMovies()["results"]
+    movies = json.dumps(parseMovies())
     return movies
