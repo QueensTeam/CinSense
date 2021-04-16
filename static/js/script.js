@@ -1,5 +1,10 @@
 $(document).ready(function () {
 
+    $.get("/getAll", {}).done(function(data) {
+      var movies = JSON.parse(data);
+      movies.forEach(addMovie);
+    });
+
   $('.first-button').on('click', function () {
 
     $('.animated-icon1').toggleClass('open');
@@ -13,6 +18,14 @@ $(document).ready(function () {
     $('.animated-icon3').toggleClass('open');
   });
 });
+
+
+
+function addMovie(value){
+	alt = value.title + " (" + value.release_year + ")";
+  title = value.title;
+	$("#gallery").append("<img src=\"https://image.tmdb.org/t/p/w600_and_h900_bestv2/" + value.poster + "\" alt=\"" + alt + "\" title=\"" + title + "\" class=\"col-12 col-lg-2  mov\"/>");
+}
 
 window.transitionToPage = function(href) {
     document.querySelector('body').style.opacity = 0
