@@ -1055,3 +1055,4 @@ Scripts/pip3.9.exe
 Scripts/pip3.exe
 Scripts/python.exe
 Scripts/pythonw.exe
+__pycache__/app.cpython-39.pyc

@@ -5,16 +5,33 @@ from dotenv import load_dotenv
 import os
 from hashlib import sha256
 import pymysql
+import json
 
 load_dotenv()
 
 def getAllMovies():
-    response = requests.get("https://api.themoviedb.org/3/discover/movie?api_key={}&sort_by=popularity.desc&page=1".format(TMDB_API_KEY))
+    response = requests.get("https://api.themoviedb.org/3/discover/movie?api_key=" + os.environ.get('TMDB_API_KEY') + "&sort_by=popularity.desc&page=1")
     return response.json()
+
+def parseMovies():
+    movies = getAllMovies()["results"]
+    for movie in movies:
+        title = movie['title']
+        poster = "https://image.tmdb.org/t/p/w600_and_h900_bestv2" + movie['poster_path']
+        backdrop = "https://image.tmdb.org/t/p/w600_and_h900_bestv2" + movie['backdrop_path']
+        overview = movie['overview']
+        release_year = str(movie['release_date'][0:4])
+        vote_avg = str(movie['vote_average'])
+        genres = movie['genre_ids'][0]
+        print(title + " " + str(genres) + "\n")
+
+parseMovies()
 
 def getGenres():
     response = requests.get("https://api.themoviedb.org/3/genre/movie/list?api_key=" + os.environ.get('TMDB_API_KEY') + "&language=en-US")
     print(response.json())
+
+getGenres()
 
 def connectToDB():
     connection = pymysql.connect(host='localhost', user='root', password='', database='cinsense', charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
