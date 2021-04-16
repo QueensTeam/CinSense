@@ -26,7 +26,9 @@
 <div id="userStateOffline">
 		<a href="account.html" class=offlineTitle>you are offline</a>
 		<a href="account.html" class=offlineComment>login or register!</a>
-	</div></header>
+	</div>
+<div id="userStateOnline" class="dontshow">
+		<a href="./account.html" class=onlineTitle>you are online</a></header>
 	<nav class="navbar mb-4">
 	  <a class="navbar-brand simple" href="index.html">Home</a>
 	  <button class="navbar-toggler first-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent20"
@@ -50,19 +52,10 @@
 	    </ul>
 	  </div>
 	</nav>
-	<!-- <h1 id="beatle">Movie Roulette</h1>
-		<p class="seethrough">let us choose a movie you will watch. just squeeze the lemon</p>
-	<div> -->
-	<!-- <p id="filterSecText2">Filter:</p> -->
-	
-	<!-- </div> -->
-	<section class="moviefilters col-11 col-sm-11 col-md-11 col-lg-9">
-		<div id="filter1" class="">.</div>
-		<div id="filter2" class="">.</div>
-		<div id="filter3" class="">.</div>
-		<div id="filter4" class="">.</div>
-		<div id="okbutton" class="" onclick="randomovie()">OK</div>
-	</section>
+	<h1 id="beatle">Movie Roulette</h1>
+		<p class="seethrough">let us choose a movie you will watch.</p>
+	<div>
+	<div class="mainContent">
 		<p class="randomovie1" id="lemon" onclick="randomovie()"><i class="fas fa-lemon"></i></p>
 	<p class="randomovie2" id="lemon2" onclick="randomovie()"><i class="fas fa-lemon"></i></p>
 	<section class="list">
@@ -100,7 +93,9 @@
 		<div onclick="transitionToPage('https://www.imdb.com/title/tt0038890/?ref_=nv_sr_srsg_0')"><p class="ltitle">Rome: Open City (1945)</p>
 		<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/ijGV4v8JxgbNzgEhqKdzHdaZn8a.jpg" alt="" title="Rome: Open City (1945)" class="col-12  col-lg-5 lpic"/></div>
 	</section>
-
+</div>
+<footer onmouseover="showTheFooter()" onmouseout="showTheFooter()"><p class="" id="footerInfo1">This website was made for educational purposes. 	&#169; QueensTeam 2021</p>
+		<p class="dontshow" id="footerInfo2" >Website creators and owners: <div id="creatorNames" class="dontshow">Dominyka Lupeikytė, Anastasija Vasiljeva, Greta Klimavičiūtė.</div></p></footer>
 	<!-- <footer>
 		<p id="credit" class="col-11 col-sm-5 col-md-5 col-lg-3">This page was made by Dominyka</p>
 	</footer> -->

@@ -19,6 +19,7 @@ body{
 header{
 	position:relative;
 	text-align:center;
+	/*background-color:#e6e2d6;*/
 }
 
 #front{
@@ -132,9 +133,9 @@ a.simple {
   font-family: "Karantina";
   /*font-family: "Roboto Slab";*/
   text-transform: uppercase;
-  font-size: 30px;
+  font-size: 33px;
   /*font-weight:400;*/
-  padding:0 3px 0 3px;
+  padding:0 5px 0 5px;
 /*  padding: 10px;*/
   line-height: 100%;
   margin:0px 50px 10px 50px;
@@ -165,9 +166,14 @@ a.simple:focus span {
   -moz-transform: translateY(30px);
 }
 a.active span{
-	text-decoration: line-through white;
+	/*text-decoration: line-through white;*/
 	/*color:white;*/
 	color:red;
+	border-radius:5px;
+	color:#fc0;
+	/*font-weight:600;*/
+	/*background-color:black;*/
+	text-shadow:0.5px 0.5px 1px gray;
 }
 /*Home button*/
 .simp{
@@ -265,13 +271,13 @@ display: flex;
 }
 
 footer{
-	position: fixed;
+	/*position: fixed;*/
 	/*margin:0 auto auto 0;*/
-	left:0;
+	/*left:0;*/
 	/*top:98%;*/
-	bottom:1%;
-	width:100%;
-	border-top: solid #222 10px;
+	/*margin-bottom:1%;*/
+	/*width:100%;*/
+	/*border-top: solid #222 10px;*/
 }
 
 .sec{
@@ -334,16 +340,17 @@ img.lhp{
 }
 img.mov{
 	margin: 2%;
-	opacity:0.8;
-	border: 7px solid transparent;
+	opacity:0.9;
+	/*border: 7px solid transparent;*/
 	padding:0;
 	display:inline-block;
 	/*float:left;*/
 }
 img.mov:hover{
 	opacity:1;
-	border:solid 7px #C02323;
+	/*border:solid 7px #C02323;*/
 	padding:0;
+	cursor:pointer;
 }
 .text{
 	float:right;
@@ -770,7 +777,8 @@ h1 #title {
 	background-color:pink;
 	background-color: #F3DE8A;
 	background-color: #f2f2f2;
-
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
 	/*box-shadow:1px 1px 1px gray;*/
 	position:static;
 }
@@ -806,6 +814,7 @@ h1 #title {
 }
 .moviefilters div:hover{
 	background-color:#C02323;
+	background-color:#fc0;
 	color:black;
 }
 .moviefilters div select:hover{
@@ -826,6 +835,7 @@ h1 #title {
 	border: none;
 	text-align:center;
 	color:red;
+	color:#fc0;
 	border-radius:5px;
 	/*margin-bottom:2%;*/
 	display:inline;
@@ -868,15 +878,26 @@ h1 #title {
 .offlineUser{
 	margin:5% auto;
 }
-input[type=text], input[type=password]{
+input[type=text], input[type=password], input[type=date]{
   width: 100%;
   padding: 3px 10px;
-  margin: 1% 0;
+  margin: 2px 0;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
   text-align:left;
+  font-family:'Segoe UI';
+	font-size:15px;
+}
+input[type=image]{
+	display:block;
+	margin:1% auto;
+	margin-bottom:2%;
+}
+input[type=image]:hover{
+	cursor:pointer;
+	opacity:0.9;
 }
 
 input[type=submit], #registerButton, #loginButton {
@@ -890,8 +911,13 @@ input[type=submit], #registerButton, #loginButton {
   cursor: pointer;
   text-align: center;
 }
+#saveButton{
+	float:right;
+	width:10%;
+}
+
 #registerButton, #loginButton{
-	 border-radius: 5px;
+	border-radius: 5px;
   background-color: #f2f2f2;
   display:block;
   /*text-align: left;*/
@@ -903,6 +929,32 @@ input[type=submit], #registerButton, #loginButton {
 
 input[type=submit]:hover, #registerButton:hover, #loginButton:hover {
   background-color: #C02323;
+  background-color:#fc0;
+}
+
+#profileForm{
+	border-radius: 5px;
+	/*background-color: #f2f2f2;*/
+	display:inline-block;
+	text-align: left;
+	font-family:'Bebas Neue';
+	/*font-family:'Segoe UI';*/
+	font-size:20px;
+	/*font-family:'Antonio';*/
+	  /*top:10%;*/
+	margin:0 auto;
+}
+#profileForm input[type=text], #profileForm input[type=password], #profileForm input[type=date]{
+	width:50%;
+	display:block;
+	margin:1% auto;
+	font-family:'Segoe UI';
+	font-size:15px;
+}
+#profileForm label{
+	margin:0 auto;
+	display:block;
+	text-align:center;
 }
 
 #registerForm, #loginForm{
@@ -917,12 +969,12 @@ input[type=submit]:hover, #registerButton:hover, #loginButton:hover {
   /*padding: 20px;*/
 }
 
-#registerForm{
-	/*margin-top:50%;*/
-	/*display:none;*/
+
+#registerForm label{
+	margin:0 auto;
 }
-#loginForm{
-	/*display:none;*/
+#loginForm label{
+	margin:0 auto;
 }
 #registerButton, #loginButton{
 	margin:1% auto;
@@ -955,31 +1007,55 @@ input[type=submit]:hover, #registerButton:hover, #loginButton:hover {
     z-index:0;
 }
 .activeContainer{
-	position:absolute;
+	position:fixed;
 	display:block;
 	z-index:100;
 	top:50%;
 	left:50%;
 	transform: translate(-50%, -50%);
 	background-color: #f2f2f2;
+	/*background-color: hsl(45deg 24% 87%);*/
 	/*background-color: red;*/
 	margin:0 auto;
+	padding:0;
 	/*border: 2px solid #C02323;*/
-	border: 2px solid red;
+	border: 2px solid black;
 }
 .movieInfo{
-	padding:5%;
-	margin:1%;
-	float:right;
+	/*padding:10%;*/
+	/*margin:;*/
+	/*float:right;*/
+	/*position:absolute;*/
 	font-family:'Antonio';
+	font-family: "Segoe UI";
+	font-size: 15px;
+	/*margin:0 5%;*/
+	text-align:center;
 	/*display:inline-block;*/
+	/*background-color:white;*/
 }
 .movieInfo p{
 	display:inline;
+	/*background-color:white;*/
 }
-.movieTitle{
+#movieTitle{
 	font-size:50px;
+	font-family: 'Antonio';
+	display:inline;
+	text-shadow: 2px 2px 2px #e6e2d6;
 	/*margin:0.5%;*/
+}
+#movieSummary{
+	display:block;
+	text-align:center;
+	display: flex;
+  	justify-content: space-around;
+   	text-align: justify;
+  	text-justify: inter-word;
+  	/*margin:0 auto;*/
+  	margin:0 2% 1% 0;
+  	font-size:100%;
+  	font-family: "Segoe UI", sans-serif;
 }
 .activeContainer img{
 	float:left;
@@ -1002,18 +1078,19 @@ input[type=submit]:hover, #registerButton:hover, #loginButton:hover {
 	/*float:right;*/
 	text-align:right;
 }
-#userStateOffline {
+#userStateOffline, #userStateOnline {
 	left:90%;
 	position:absolute;
 	top:25%;
 }
-#userStateOffline a{
+#userStateOffline a, #userStateOnline a{
 	color: #C02323;
 	color: red;
+	color:#fc0;
 	font-style: italic;
 	font-family: "Segoe UI";
 }
-#userStateOffline a:hover{
+#userStateOffline a:hover, #userStateOnline a:hover{
 	color:black;
 	font-style:normal;
 	text-decoration: none;
@@ -1038,10 +1115,181 @@ input[type=submit]:hover, #registerButton:hover, #loginButton:hover {
 	/*color: red;*/
 	margin:1%;
 	color:#C02323;
+	color:#fc0;
 	/*text-shadow:0.5px 1px 2px gray;*/
 }
 #contacts a:hover{
 	text-decoration: none;
 	color:black;
 	font-size:32px;
+}
+
+
+.star-rating {
+  /*border:solid 1px #ccc;*/
+  display:flex;
+  flex-direction: row-reverse;
+  font-size:50px;
+  justify-content:space-around;
+  padding:0 .2em;
+  text-align:center;
+  /*width:10em;*/
+  margin:0 auto;
+  margin-right:3%;
+}
+
+.star-rating input {
+  display:none;
+}
+
+.star-rating label {
+  color:#ccc;
+  cursor:pointer;
+}
+
+.star-rating :checked ~ label {
+  color:#f90;
+  /*color: red;*/
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+  color:#fc0;
+  /*color: red;*/
+}
+#movieYourVote{
+	display:block;
+	margin:2% auto;
+	text-align:center;
+}
+
+#movieVoteAverage, #movieVoteCount{
+	text-align:left;
+	margin-left:1%;
+	display:block;
+	margin-bottom:0;
+	padding-bottom:0;
+	padding-top:0;
+}
+#movieVoteAverage{
+	font-size:35px;
+	/*width:20px;*/
+	/*text-align:center;*/
+}
+#movieGenre{
+	margin:0 2%;
+	text-align:right;
+	text-transform: uppercase;
+	/*text-decoration: italic;*/
+	font-weight: 600;
+	/*border:1px solid black;*/
+	display:block;
+}
+
+.movieInfo p:hover{
+	opacity:0.7;
+}
+#tmdbInfo {
+	margin:0 0 0 65%;
+	display:block;
+	text-align:center;
+	/*border: 2px solid black;*/
+}
+
+#uncheckedWatchlist, #checkedWatchlist, #checkedSeen, #uncheckedSeen{
+	font-size:40px;
+	color:#ccc;
+	/*-webkit-text-stroke: 0.4px 1px black;*/
+	text-shadow:1px 1px 1px black;
+	/*color:	#e6e2d6;*/
+	text-align:left;
+	margin:2%;
+}
+#uncheckedWatchlist:hover, #checkedWatchlist:hover, #checkedSeen:hover, #uncheckedSeen:hover{
+	cursor:pointer;
+	color:#fc0;
+}
+#checkedSeen, #checkedWatchlist{
+	
+	color:#f90;
+	/*color:red;*/
+}
+body{
+	/*background-color:#e6e2d6;*/
+	background-color: #F8F8F2;
+	padding:0;
+	margin:0;
+}
+header{
+	width:100vw;
+	background-color: #F8F8F2;
+	margin:0 0 0 0;
+	padding:0 0 0 0;
+}
+.head{
+	/*background-color: #F8F8F2;*/
+	/*border-bottom: 1px solid black;*/
+}
+.mainContent{
+	margin:1%;
+	background-color: #F8F8F2;
+	/*min-height:100vh;*/
+}
+footer{
+	position:static;
+	position: absolute;
+  	bottom: 0;
+  	width: 100%;
+  	height: 2.5rem;
+  	font-family: 'Segoe UI';
+  	font-family: 'Bebas Neue';
+	text-transform: uppercase;
+ 	letter-spacing: 3px;
+ 	font-weight: 400;
+}
+#footerInfo2{
+	/*font-family:'Segoe UI';*/
+	font-family:'Bebas Neue';
+	font-weight:700;
+	/*color: #fc0;*/
+	text-transform: uppercase;
+ 	/*text-shadow:grey 0.5px 0.5px;*/
+ 	 letter-spacing: 3px;
+ 	/*font-size:30px;*/
+ 	font-weight: 400;
+ 	/*margin-top:50px;*/
+ 	text-align: center;
+ 	display:inline;
+}
+#creatorNames{
+	/*color: #fc0;*/
+	font-family:'Segoe UI';
+	font-weight:700;
+	/*color: #fc0;*/
+	/*text-transform: uppercase;*/
+ 	/*text-shadow:grey 0.5px 0.5px;*/
+ 	 /*letter-spacing: 3px;*/
+ 	/*font-size:30px;*/
+ 	text-transform: none;
+ 	font-weight: 400;
+	display:inline;
+	margin:0;
+	padding:0;
+}
+.addcont{
+
+}
+
+.movCheckers{
+	font-size:10px;
+	position:absolute;
+	top:2%;
+}
+.movCheckers p i{
+	font-size:30px;
+	/*position:absolute;*/
+	top:2%;
+	display:inline;
+	margin:0;
+	padding:0;
 }
