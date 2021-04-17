@@ -9,41 +9,22 @@ import json
 
 load_dotenv()
 
-def getAllMovies(page):
-    response = requests.get("https://api.themoviedb.org/3/discover/movie?api_key=" + os.environ.get('TMDB_API_KEY') + "&sort_by=popularity.desc&page=" + str(page))
+def getAllMovies(page, genre=None):
+    link = "https://api.themoviedb.org/3/discover/movie?api_key=" + os.environ.get('TMDB_API_KEY') + "&sort_by=popularity.desc&page=" + str(page)
+    if genre:
+        link += "&with_genres=" + str(genre)
+        print(link)
+    response = requests.get(link)
+    print (response.json())
     return response.json()
 
-
-def parseMovies(page):
-    movies = getAllMovies(page)["results"]
-    parsed_movies = []
-    for movie in movies:
-        parsed_movie = {}
-        movie_id = str(movie['id'])
-        title = movie['title']
-        if movie['poster_path']:
-            poster = movie['poster_path'][1:]
-        if movie['backdrop_path']:
-            backdrop = movie['backdrop_path'][1:]
-        overview = movie['overview']
-        release_year = str(movie['release_date'][0:4])
-        vote_avg = str(movie['vote_average'])
-        vote_count = str(movie['vote_count'])
-        genres = movie['genre_ids']
-        for variable in ["movie_id", "title", "overview", "release_year", "vote_avg", "genres", "vote_count"]:
-            parsed_movie[variable]=eval(variable)
-        if 'poster' in locals():
-            parsed_movie["poster"] = poster
-        if 'backdrop' in locals():
-            parsed_movie["backdrop"] = backdrop
-        parsed_movies.append(parsed_movie.copy())
-    return parsed_movies
+def getFilteredMovies(page, genre):
+    response = requests.get("https://api.themoviedb.org/3/discover/movie?api_key=" + os.environ.get('TMDB_API_KEY') + "&sort_by=popularity.desc&page=" + str(page) + "&with_genres=" + str(genre))
+    return response.json()
 
 def getGenres():
     response = requests.get("https://api.themoviedb.org/3/genre/movie/list?api_key=" + os.environ.get('TMDB_API_KEY') + "&language=en-US")
     print(response.json())
-
-getGenres()
 
 def connectToDB():
     connection = pymysql.connect(host='localhost', user='root', password='', database='cinsense', charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
@@ -105,7 +86,16 @@ def recommend():
 def indFilm():
     return render_template("filmPage.html")
 
-@app.route("/getAll")
-def getAll():
-    movies = json.dumps(parseMovies(1))
+@app.route("/getAll/<page>")
+@app.route("/getAll/<genre>/<page>/")
+def getAll(page, genre=None):
+    if genre:
+        movies = json.dumps(getAllMovies(page, genre)["results"])
+    else: 
+        movies = json.dumps(getAllMovies(page)["results"])
+    return movies
+
+@app.route("/genre/<genre>/<page>")
+def getGenre(genre, page):
+    movies = json.dumps(getFilteredMovies(page, genre)["results"])
     return movies
