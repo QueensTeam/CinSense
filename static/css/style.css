@@ -222,7 +222,7 @@ a.active span{
  	 letter-spacing: 3px;
  	font-size:30px;
  	font-weight: 400;
- 	margin-top:50px;
+ 	margin-top:1%;
  	text-align: center;
   /* position: absolute;
   top: 85%;
@@ -598,23 +598,24 @@ section.list span{
 	cursor:pointer;
 }
 
-.randomovie1 i.fa-lemon, .randomovie2 i.fa-lemon{
+.randomovie1 i.fa-crown, .randomovie2 i.fa-crown{
 	font-size:1500%;
 	text-align:center;
 	/*display:block;*/
 	color:#F1D763;
+	color:#fc0;
 	text-shadow:grey 2px 2px;
 	width:20%;
 	margin: 5%;
 	cursor:pointer;
 }
-.randomovie1 i.fa-lemon:hover, .randomovie2 i.fa-lemon:hover{
+.randomovie1 i.fa-crown:hover, .randomovie2 i.fa-crown:hover{
 	text-shadow:none;
 	background: -webkit-repeating-linear-gradient(90deg, black, black 5px, white 5px, white 10px);
   	-webkit-background-clip: text;
  	-webkit-text-fill-color: transparent;
 }
-.randomovie2 i.fa-lemon{
+.randomovie2 i.fa-crown{
 	margin:0;
 	font-size:400%;
 }
@@ -747,7 +748,7 @@ h1 #title {
 	box-shadow:1px 1px gray;
 }
 #movieoftheweek{
-	margin-bottom:5%;
+	margin-bottom:2%;
 }
 #movieoftheweek img:hover{
 	cursor:pointer;
@@ -772,7 +773,7 @@ h1 #title {
 	z-index:0;
 	text-align:center;
 	margin: 0 auto;
-	margin-top:4%;
+	margin-top:1%;
 	margin-bottom:4%;
 	background-color:pink;
 	background-color: #F3DE8A;
@@ -807,6 +808,7 @@ h1 #title {
 	border:none;
 	display:block;
 	margin:0 auto;
+	/*padding:;*/
 	text-align:center;
 	width:7vw;
 	border-radius:5px;
@@ -848,14 +850,15 @@ h1 #title {
 	cursor:pointer;
 	opacity:0.9;
 	color:black;
-	background-color:#C02323;
+	/*background-color:#C02323;*/
+	background-color:#fc0;
 
 }
 #filterSecText, #filterSecText2{
 	position:absolute;
 	font-family: 'Bebas Neue';
 	font-size:20px;
-	top:19%;
+	top:33%;
 	left:18%;
 }
 #filterSecText2{
@@ -1104,15 +1107,11 @@ input[type=submit]:hover, #registerButton:hover, #loginButton:hover {
 }
 
 #contacts{
-	/*position:absolute;*/
 	font-size:30px;
-	/*left:70%;*/
-	margin:0 30% 0 0;
-	/*float:right;*/
-	text-align:right;
+	margin:0 auto;
+	text-align:center;
 }
 #contacts a{
-	/*color: red;*/
 	margin:1%;
 	color:#C02323;
 	color:#fc0;
@@ -1292,4 +1291,24 @@ footer{
 	display:inline;
 	margin:0;
 	padding:0;
+}
+#aboutPageImg{
+	display:block;
+	/*width:10vw;*/
+}
+#aboutPageImg img{
+	display:inline;
+	width:12vw;
+	margin:0 0.5% 0 0.5%;
+}
+#aboutPageImg img:hover{
+	opacity:0.8;
+	border:15px solid #fc0;
+	padding:0;
+}
+.imgbig{
+	margin:0;
+	margin-bottom:0;
+	padding:0;
+	/*position:absolute;*/
 }
