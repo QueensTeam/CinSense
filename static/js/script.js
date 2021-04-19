@@ -171,3 +171,53 @@ function openRegister(){
   // regForm.classList.add("show");
   regButton.classList.add("dontshow");
 }
+
+function checkWatchlist(){
+  var checkButton = document.getElementById("checkedWatchlist");
+  var uncheckButton = document.getElementById("uncheckedWatchlist");
+  if(checkButton.classList.contains("dontshow")){
+    checkButton.classList.remove("dontshow");
+  }
+  uncheckButton.classList.add("dontshow");
+}
+
+function uncheckWatchlist(){
+  var checkButton = document.getElementById("checkedWatchlist");
+  var uncheckButton = document.getElementById("uncheckedWatchlist");
+  if(uncheckButton.classList.contains("dontshow")){
+    uncheckButton.classList.remove("dontshow");
+  }
+  checkButton.classList.add("dontshow");
+}
+function checkSeen(){
+  var checkButton = document.getElementById("checkedSeen");
+  var uncheckButton = document.getElementById("uncheckedSeen");
+  if(checkButton.classList.contains("dontshow")){
+    checkButton.classList.remove("dontshow");
+  }
+  uncheckButton.classList.add("dontshow");
+}
+
+function uncheckSeen(){
+  var checkButton = document.getElementById("checkedSeen");
+  var uncheckButton = document.getElementById("uncheckedSeen");
+  if(uncheckButton.classList.contains("dontshow")){
+    uncheckButton.classList.remove("dontshow");
+  }
+  checkButton.classList.add("dontshow");
+}
+
+function showTheFooter(){
+  var foot1 = document.getElementById("footerInfo1");
+  var foot2 = document.getElementById("footerInfo2");
+  var cred = document.getElementById("creatorNames");
+  if(foot2.classList.contains("dontshow")){
+    foot2.classList.remove("dontshow");
+    cred.classList.remove("dontshow");
+    foot1.classList.add("dontshow");
+  } else if (foot1.classList.contains("dontshow")){
+    foot1.classList.remove("dontshow");
+    foot2.classList.add("dontshow");
+    cred.classList.add("dontshow");
+  }
+}
