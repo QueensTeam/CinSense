@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import requests
 import mysql.connector
 from dotenv import load_dotenv
@@ -17,6 +17,14 @@ def getAllMovies(page, genre=None):
     response = requests.get(link)
     print (response.json())
     return response.json()
+
+def getOneMovie(id): 
+    link = "https://api.themoviedb.org/3/movie/" + str(id) + "?api_key=" + os.environ.get('TMDB_API_KEY')  + "&language=en-US"  
+    response = requests.get(link)
+    print (response.json())
+    return response.json()
+
+getOneMovie(802504)
 
 def getFilteredMovies(page, genre):
     response = requests.get("https://api.themoviedb.org/3/discover/movie?api_key=" + os.environ.get('TMDB_API_KEY') + "&sort_by=popularity.desc&page=" + str(page) + "&with_genres=" + str(genre))
@@ -99,3 +107,13 @@ def getAll(page, genre=None):
 def getGenre(genre, page):
     movies = json.dumps(getFilteredMovies(page, genre)["results"])
     return movies
+
+@app.route("/register",methods = ['POST', 'GET'])
+def register():
+    if request.method == 'POST':
+        print (request.values)
+        return render_template("index.html")
+
+@app.route("/movie/<id>")
+def getMovie(id):
+    return getOneMovie(id)
