@@ -58,15 +58,15 @@
 		<div id="loginButton" onclick="openLogin()">Login</div>
 		<div id="registerForm" class="col-12 col-lg-4 dontshow">
 			
-  			<form action="/">
+  			<form action="/register" method = "POST" enctype="multipart/form-data">
    				<label for="username">Username</label>
-  		  		<input type="text" id="username" name="Username" placeholder="Your username">
+  		  		<input type="text" id="registration_username" name="Username" placeholder="Your username">
 
     			<label for="email">Email</label>
-    			<input type="text" id="email" name="email" placeholder="Your email">
+    			<input type="text" id="registration_email" name="email" placeholder="Your email">
 
     			<label for="password">Password</label>
-   				<input type="password" id="password" name="password" placeholder="Your password">
+   				<input type="password" id="registration_password" name="password" placeholder="Your password">
   
     			<input type="submit" value="Register">
     			<label for="login" onclick="openLogin()" class="right1">Login instead</label>
@@ -74,7 +74,7 @@
 		</div>
 		<div id="loginForm" class="col-12 col-lg-4 dontshow">
 
-  			<form action="/action_page.php">
+  			<form action="">
    				<label for="username">Username/Email</label>
   		  		<input type="text" id="username" name="Username" placeholder="Your username or email">
 
