@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CinSense</title>
+	<link rel="icon" type="image/png" href="../static/img/crown.png"/>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/2cd86d0939.js" crossorigin="anonymous"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/stylemain.css">
+</head>
+<body>
+	<header class="head"><h1 id="minititle">CinSense</h1>
+	<div class="decline col-12 col-lg-12"></div>
+	<nav class="main items">
+		<a class="simple" href="./index.html"><span data-hover="Home">Home</span></a>
+		<a class="simple" href="./films.html" ><span data-hover="Films">Films</span></a>
+		<a class="simple" href="./recommend.html"><span data-hover="Recommendation">Recommendation</span></a>
+		<a class="simple" href="./account.html"><span data-hover="Account">Account</span></a>
+		<a class="simple active" href="./about.html"><span data-hover="About">About</span></a>
+	</nav>
+	<div id="userStateOffline">
+		<a href="./account.html" class=offlineTitle>you are offline</a>
+		<a href="./account.html" class=offlineComment>login or register!</a>
+	</div>
+	<div id="userStateOnline" class="dontshow">
+		<a href="./account.html" class=onlineTitle>you are online</a></header>
+	<nav class="navbar mb-4">
+	  <a class="navbar-brand simple" href="./index.html">Home</a>
+	  <button class="navbar-toggler first-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent20"
+	    aria-controls="navbarSupportedContent20" aria-expanded="false" aria-label="Toggle navigation">
+	    <div class="animated-icon1"><span></span><span></span><span></span></div>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent20">
+	    <ul class="navbar-nav mr-auto">
+	      <li class="nav-item">
+	        <a class="simple nav-link " href="./films.html">Films</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link simple" href="./recommend.html">Recommendation</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link simple" href="./account.html">Account</a>
+	      </li>
+	      <li class="nav-item active">
+	        <a class="nav-link simple" href="./about.html">About</a>
+	      </li>
+	    </ul>
+	  </div>
+	</nav>
+	<div class="mainContent">
+		<p id="aboutPageImg">
+			<a href="mailto:dominyka.lupeikyte@stud.vgtu.lt"><img src="../static/img/image0.png" alt="Woman with glasses" title="Dominyka" class="rounded-circle" /></a>
+			<a href="mailto:greta.klimaviciute@stud.vgtu.lt"><img src="../static/img/image1.png" alt="Woman with glasses" title="Greta" class="rounded-circle"/></a>
+			<a href="mailto:anastasija.vasiljeva@stud.vgtu.lt"><img src="../static/img/image2.png" alt="Woman with glasses" title="Anastasija" class="rounded-circle"/></a>
+		</p>
+		<p id="contacts">
+			<a href=""><i class="fas fa-phone" alt="Phone"></i>
+			</a>
+			<a href=""><i class="fas fa-comment" alt="Chat"></i>
+			</a>
+			<a href=""><i class="fas fa-at" alt="Email"></i></a>
+		</p>
+		<h1 id="beatle">About</h1>
+		<p class="seethrough">the story of our CinSense</p>
+	<!-- <section class="borderr"> -->
+		
+		<p class="smallersec col-11 col-sm-9 col-md-5 col-lg-5" >
+			
+		This is a website dedicated to MOVIES!!! Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec congue nunc pulvinar condimentum tempus. Ut ante ante, ultrices at malesuada quis, rutrum id nisi. Nam sapien ipsum, ornare eget laoreet vitae, lobortis eu orci. Vestibulum suscipit tincidunt purus, nec porttitor ante placerat eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed suscipit, enim id luctus accumsan, nisl massa hendrerit lorem, ac elementum justo nibh nec ex. Duis bibendum rutrum ligula et auctor. Curabitur sollicitudin fringilla turpis, a interdum libero maximus eget. Praesent sed bibendum velit. Integer scelerisque ut lacus eget dictum.</p>
+		<p id="sign">Dominyka, Greta & Anastasija</p>
+	<!-- </section> -->
+	</div>
+	<footer onmouseover="showTheFooter()" onmouseout="showTheFooter()"><p class="" id="footerInfo1">This website was made for educational purposes. 	&#169; QueensTeam 2021</p>
+		<p class="dontshow" id="footerInfo2" >Website creators and owners: <div id="creatorNames" class="dontshow">Dominyka Lupeikytė, Anastasija Vasiljeva, Greta Klimavičiūtė.</div></p></footer>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+	<script src="../static/js/script.js"></script>
+</body>
+</html>
