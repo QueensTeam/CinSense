@@ -13,18 +13,13 @@ def getAllMovies(page, genre=None):
     link = "https://api.themoviedb.org/3/discover/movie?api_key=" + os.environ.get('TMDB_API_KEY') + "&sort_by=popularity.desc&page=" + str(page)
     if genre:
         link += "&with_genres=" + str(genre)
-        print(link)
     response = requests.get(link)
-    print (response.json())
     return response.json()
 
 def getOneMovie(id): 
     link = "https://api.themoviedb.org/3/movie/" + str(id) + "?api_key=" + os.environ.get('TMDB_API_KEY')  + "&language=en-US"  
     response = requests.get(link)
-    print (response.json())
     return response.json()
-
-getOneMovie(802504)
 
 def getFilteredMovies(page, genre):
     response = requests.get("https://api.themoviedb.org/3/discover/movie?api_key=" + os.environ.get('TMDB_API_KEY') + "&sort_by=popularity.desc&page=" + str(page) + "&with_genres=" + str(genre))
@@ -111,7 +106,7 @@ def getGenre(genre, page):
 @app.route("/register",methods = ['POST', 'GET'])
 def register():
     if request.method == 'POST':
-        print (request.values)
+        registerUser(request.values.get("registration_username"), request.values.get("registration_email"), request.values.get("registration_password"))
         return render_template("index.html")
 
 @app.route("/movie/<id>")
