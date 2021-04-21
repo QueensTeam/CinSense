@@ -17,6 +17,7 @@ $(document).ready(function () {
     $('.animated-icon3').toggleClass('open');
   });
 });
+
 window.addEventListener('scroll', () => {
   const {
       scrollTop,
@@ -31,14 +32,17 @@ window.addEventListener('scroll', () => {
 }, {
   passive: true
 });
+
 const hasMoreMovies = (page, total) => {
   const startIndex = (page - 1) * 20 + 1;
   return total === 0 || startIndex < total;
 };
+
 const addMovies = (movies) => {
   mv = JSON.parse(movies);
   mv.forEach(addMovie);
 };
+
 function searchForMovies(){
   var genre = document.getElementById("genre").value;
   var decade = document.getElementById("decade").value;
@@ -51,6 +55,7 @@ function searchForMovies(){
   currentUrl = url;
   loadMovies(currentPage, url);
 }
+
 function addMovie(value){
     if (value.hasOwnProperty('release_date')) {
       release_year = value.release_date.substring(0, 4);
@@ -112,6 +117,7 @@ window.transitionToPage = function(href) {
 document.addEventListener('DOMContentLoaded', function(event) {
     document.querySelector('body').style.opacity = 1
 })
+
  function randomovie(){
     var ltit = document.getElementsByClassName("ltitle");
     var lpi = document.getElementsByClassName("lpic");
@@ -120,11 +126,9 @@ document.addEventListener('DOMContentLoaded', function(event) {
      for (var i=0; i < ltit.length; i++){
         if(ltit[i].classList.contains('closed')) {
            ltit[i].classList.remove('closed');
-           // k++;
         }
         if(ltit[i].classList.contains('openli')) {
            ltit[i].classList.remove('openli');
-           // k++;
         }
         if(lpi[i].classList.contains('openph'))
           lpi[i].classList.remove('openph');
@@ -141,10 +145,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
         ltit[i].classList.add('openli');
       }
    }
-  // document.getElementById("randomovie").innerHTML = "&starf;"
 }
-document.getElementById("randomovie").ondblclick = function reset(){
-}
+
 function openLogin(){
   var logButton = document.getElementById("loginButton");
   var logForm = document.getElementById("loginForm");
@@ -155,9 +157,9 @@ function openLogin(){
   }
   regForm.classList.add("dontshow");
   logButton.classList.add("dontshow");
-  // logForm.classList.add("show");
   regButton.classList.add("dontshow");
 }
+
 function openRegister(){
   var logButton = document.getElementById("loginButton");
   var regForm = document.getElementById("registerForm");
@@ -168,7 +170,6 @@ function openRegister(){
   }
   logButton.classList.add("dontshow");
   logForm.classList.add("dontshow");
-  // regForm.classList.add("show");
   regButton.classList.add("dontshow");
 }
 
@@ -221,3 +222,31 @@ function showTheFooter(){
     cred.classList.add("dontshow");
   }
 }
+
+
+
+ // function registerValidation() {
+ //        var name = document.forms["RegForm"]["Username"];
+ //        var email = document.forms["RegForm"]["email"];
+ //        var password = document.forms["RegForm"]["Password"];
+  
+ //        if (name.value == "") {
+ //            window.alert("Please enter your username.");
+ //            name.focus();
+ //            return false;
+ //        }
+  
+ //        if (email.value == "") {
+ //            window.alert(
+ //              "Please enter a valid e-mail address.");
+ //            email.focus();
+ //            return false;
+ //        }
+ //        if (password.value == "") {
+ //            window.alert("Please enter your password");
+ //            password.focus();
+ //            return false;
+ //        }
+  
+ //        return true;
+ //    }

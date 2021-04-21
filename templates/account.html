@@ -58,15 +58,15 @@
 		<div id="loginButton" onclick="openLogin()">Login</div>
 		<div id="registerForm" class="col-12 col-lg-4 dontshow">
 			
-  			<form action="/register" method = "POST" enctype="multipart/form-data">
+  			<form action="/register" method = "POST" enctype="multipart/form-data" >
    				<label for="username">Username</label>
-  		  		<input type="text" id="registration_username" name="Username" placeholder="Your username">
+  		  		<input type="text" id="registration_username" name="Username" placeholder="Your username" required>
 
     			<label for="email">Email</label>
-    			<input type="text" id="registration_email" name="email" placeholder="Your email">
+    			<input type="text" id="registration_email" name="email" placeholder="Your email" required>
 
     			<label for="password">Password</label>
-   				<input type="password" id="registration_password" name="password" placeholder="Your password">
+   				<input type="password" id="registration_password" name="password" placeholder="Your password" required>
   
     			<input type="submit" value="Register">
     			<label for="login" onclick="openLogin()" class="right1">Login instead</label>
@@ -76,10 +76,10 @@
 
   			<form action="">
    				<label for="username">Username/Email</label>
-  		  		<input type="text" id="username" name="Username" placeholder="Your username or email">
+  		  		<input type="text" id="username" name="Username" placeholder="Your username or email" required>
 
     			<label for="password">Password</label>
-   				<input type="password" id="password" name="password" placeholder="Your password">
+   				<input type="password" id="password" name="password" placeholder="Your password" required>
   
     			<input type="submit" value="Login">
     			<label for="login" onclick="openRegister()" class="right1">Register instead</label>
@@ -93,16 +93,16 @@
   				<input type="image" id="userImage" src="../static/img/drew.jpg" alt="Image Submission" width="150" height="150" class="rounded-circle">
 
    				<label for="username">Username</label>
-  		  		<input type="text" id="username" name="Username" placeholder="Your username">
+  		  		<input type="text" id="username" name="Username" placeholder="Your username" required>
 
     			<label for="email">Email</label>
-    			<input type="text" id="email" name="email" placeholder="Your email">
+    			<input type="text" id="email" name="email" placeholder="Your email" required>
 
     			<label for="birthday">Birthday</label>
 				<input type="date" id="birthday" name="birthday">
 
     			<label for="password">Password</label>
-   				<input type="password" id="password" name="password" placeholder="Your password">
+   				<input type="password" id="password" name="password" placeholder="Your password" required>
   
     			<input type="submit" value="Save" id=saveButton>
  			</form>
