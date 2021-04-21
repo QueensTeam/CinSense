@@ -997,10 +997,10 @@ input[type=submit]:hover, #registerButton:hover, #loginButton:hover {
 	float:right;
 	/*bottom:1%;*/
 }
-.right1:hover{
+.right1:hover, .left1:hover{
 	cursor:pointer;
 }
-.left{
+.left, .left1{
 	float:left;
 }
 .inactiveContainer{
