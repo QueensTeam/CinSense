@@ -113,7 +113,7 @@ def updateAccount():
     if data.get('email'): 
         query += " email='" + data.get('email') + "'"
     if data.get('password'):
-        query += " password='" +
+        query += " password='" + data.get('password') + "'"
     query += " WHERE id=" + str(get_jwt_identity())  
     conn = ca.connectToDB()
     cursor = conn.cursor()
