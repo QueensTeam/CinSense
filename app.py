@@ -1,13 +1,21 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify, make_response
 import requests
 import mysql.connector
+import uuid
 from dotenv import load_dotenv
 import os
 from hashlib import sha256
 import pymysql
 import json
+import jwt
+from datetime import datetime, timedelta, timezone
+from functools import wraps
+from flask_jwt_extended import create_access_token, get_jwt_identity, JWTManager, get_jwt, jwt_required, set_access_cookies
 
 load_dotenv()
+app = Flask(__name__)
+app.config["JWT_SECRET_KEY"] = os.environ.get('SECRET_KEY') # Change this!
+jwt = JWTManager(app)
 
 def getAllMovies(page, genre=None):
     link = "https://api.themoviedb.org/3/discover/movie?api_key=" + os.environ.get('TMDB_API_KEY') + "&sort_by=popularity.desc&page=" + str(page)
@@ -44,6 +52,28 @@ def registerUser(login, email, password):
         conn.close()
     else:
         print('This user already exists')
+        conn.close()
+
+def token_required(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        token = None
+        if 'x-access-token' in request.headers:
+            token = request.headers['x-access-token']
+            print(token)
+        if not token:
+            return jsonify({'message': 'Missing token'}), 401
+        try:
+            data = jwt.decode(token, os.environ.get('SECRET_KEY'))
+            print (data)
+            conn = connectToDB()
+            cursor = conn.cursor()
+            result = cursor.execute("SELECT * FROM user WHERE id=" + str(data['public_id']))
+            conn.close()
+        except:
+            return jsonify({'message': 'Invalid token'}), 401
+        return f()
+    return decorated
 
 def checkUsernameUniqueness(login):
     conn = connectToDB()
@@ -52,19 +82,24 @@ def checkUsernameUniqueness(login):
     conn.close()
     return result
 
-def loginUserWithUName(login, password):
+def verifyUser(password, login = None, email = None):
     conn = connectToDB()
     cursor = conn.cursor()    
     password_salted = os.environ.get('SALT') + password
     psw_hash = sha256(password_salted.encode('utf-8')).hexdigest()
-    result = cursor.execute("SELECT * FROM user WHERE username='" + login + "' and password='" + psw_hash + "'")
+    query = "SELECT * FROM user WHERE "
+    if (login):
+        query += "username='" + login 
+    elif (email):
+        query += "email='" + email
+    query += "' and password='" + psw_hash + "'"
+    result = cursor.execute(query)
+    rez = cursor.fetchall()
     if (result == 0):
-        print('Error occured: password and username do not match')
+        return -1
     else:
-        print('You lucky boi, go on')
+        return str(rez[0]['id'])
     
-app = Flask(__name__)
-
 @app.route("/index.html")
 def home():    
     return render_template("index.html") 
@@ -106,9 +141,49 @@ def getGenre(genre, page):
 @app.route("/register",methods = ['POST', 'GET'])
 def register():
     if request.method == 'POST':
+        print(request.values.get("registration_username") + " " + request.values.get("registration_email") + " " + request.values.get("registration_password"))
         registerUser(request.values.get("registration_username"), request.values.get("registration_email"), request.values.get("registration_password"))
         return render_template("index.html")
 
 @app.route("/movie/<id>")
 def getMovie(id):
     return getOneMovie(id)
+
+@app.route("/allUsers", methods = ['GET'])
+@jwt_required()
+def get_all_users():
+    conn = connectToDB()
+    cursor = conn.cursor()
+    result = cursor.execute("SELECT id, username, email FROM user")
+    rez = cursor.fetchall()
+    output = []
+    print(rez)
+    for row in rez:
+        output.append({'id': row['id'], 'username': row['username'], 'email': row['email']})
+    conn.close()
+    return jsonify({'users': output})
+
+@app.route('/login', methods = ['POST'])
+def login():
+    auth = request.form
+    if not auth:
+        return make_response('User could not be verified', 401, {'WWW-Authenticate' : 'Basic realm = "User does not exist"'})
+    user = verifyUser(auth.get('password'), auth.get('username'), auth.get('email'))
+    if (user == -1):
+        return make_response('User could not be identified. Please check your login/email and password.', 401, {'WWW-Authenticate' : 'Basic realm = "Data problem"'})
+    else:
+        access_token = create_access_token(identity=user)
+        return jsonify(access_token=access_token)      
+
+@app.after_request
+def refresh_expiring_jwts(response):
+    try:
+        exp_timestamp = get_jwt()["exp"]
+        now = datetime.now(timezone.utc)
+        target_timestamp = datetime.timestamp(now + timedelta(minutes=5))
+        if target_timestamp > exp_timestamp:
+            access_token = create_access_token(identity=get_jwt_identity())
+            set_access_cookies(response, access_token)
+        return response
+    except (RuntimeError, KeyError):
+        return response
