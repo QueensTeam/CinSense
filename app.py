@@ -138,30 +138,14 @@ def getGenre(genre, page):
     movies = json.dumps(getFilteredMovies(page, genre)["results"])
     return movies
 
-@app.route("/register",methods = ['POST', 'GET'])
+@app.route("/register",methods = ['POST'])
 def register():
-    if request.method == 'POST':
-        print(request.values.get("registration_username") + " " + request.values.get("registration_email") + " " + request.values.get("registration_password"))
-        registerUser(request.values.get("registration_username"), request.values.get("registration_email"), request.values.get("registration_password"))
-        return render_template("index.html")
+    registerUser(request.values.get("registration_username"), request.values.get("registration_email"), request.values.get("registration_password"))
+    return render_template("index.html")
 
 @app.route("/movie/<id>")
 def getMovie(id):
     return getOneMovie(id)
-
-@app.route("/allUsers", methods = ['GET'])
-@jwt_required()
-def get_all_users():
-    conn = connectToDB()
-    cursor = conn.cursor()
-    result = cursor.execute("SELECT id, username, email FROM user")
-    rez = cursor.fetchall()
-    output = []
-    print(rez)
-    for row in rez:
-        output.append({'id': row['id'], 'username': row['username'], 'email': row['email']})
-    conn.close()
-    return jsonify({'users': output})
 
 @app.route('/login', methods = ['POST'])
 def login():
@@ -185,3 +169,20 @@ def deleteAccount():
     conn.commit()
     conn.close()
     return make_response('User successfully deleted', 200)
+
+@app.route('/updateAccount', methods = ['PUT'])
+@jwt_required()
+def updateAccount():
+    data = request.form
+    query = "UPDATE user SET "
+    if data.get('username'):
+        query += "username='" + data.get('username') + "'"
+    query += " WHERE id=" + str(get_jwt_identity())  
+    print(data)
+    print(query)
+    conn = connectToDB()
+    cursor = conn.cursor()
+    cursor.execute(query)
+    conn.commit()
+    conn.close()
+    return make_response('Test successful', 200)
