@@ -142,7 +142,7 @@ a.simple {
   /*height: 20px;*/
   overflow: hidden;
 }
-a.simple span{
+a.simple span, a .simple{
   display: inline-block;
   position:relative;
   transition: transform 500ms;
@@ -165,7 +165,7 @@ a.simple:focus span {
   -webkit-transform: translateY(30px);
   -moz-transform: translateY(30px);
 }
-a.active span{
+a.active span, a.active{
 	/*text-decoration: line-through white;*/
 	/*color:white;*/
 	color:red;
@@ -739,7 +739,8 @@ h1 #title {
 	background-color:white;
 	/*text-align:center;*/
 	/*left:17%;*/
-	width:13vw;
+	/*width:13vw;*/
+
 	/*height:35px;*/
 	font-size:20px;
 	text-align:center;
@@ -786,6 +787,8 @@ h1 #title {
 	color:#fc0;
 	border-radius:5px;
 	/*margin-bottom:2%;*/
+	/*position:absolute;
+	left:98%;*/
 	display:inline;
 	/*float:right;*/
 	/*position:sticky;*/
@@ -800,16 +803,18 @@ h1 #title {
 	background-color:#fc0;
 
 }
-#filterSecText, #filterSecText2{
-	position:absolute;
+#filterSecText{
+	/*position:absolute;*/
 	font-family: 'Bebas Neue';
 	font-size:20px;
-	top:33%;
-	left:18%;
+	/*top:33%;*/
+	/*left:2%;
+	display:inline-block;
+	padding:0;
+	margin:2% auto;*/
+	float:left;
 }
-#filterSecText2{
-	top:33%;
-}
+
 
 .head{
 	top:0;
@@ -1285,6 +1290,12 @@ footer{
 	color:white;
 }
 
+.tablet a{
+	font-size:70px;
+	margin:2%;
+	margin-bottom:1%;
+}
+
 @media screen and (max-width: 480px) {
   .topnav a:not(:first-child) {display: none;}
 	a.icon {
@@ -1312,10 +1323,10 @@ footer{
   }*/
 }
 
-@media screen and (max-width:767px){
-	.hi{
-  	display:none;
-  }
+@media screen and (max-width:768px){
+	/*.hi{
+  		display:none;
+  	}*/
   	.photosec{
   		display:none;
   	}
@@ -1341,8 +1352,66 @@ footer{
   		margin-left:1%;
   		margin-right:1%;
   	}
+  	nav.tablet{
+  		display:none;
+  	}
+  	#okbutton{
+  		position:absolute;
+		left:83%;
+		width:15vw;
+		height:50px;
+		margin-bottom:0;
+		background-color:#fc0;
+		color:black;
+  	}
+  	#filterSecText{
+  		left:2%;
+		display:inline-block;
+		padding:0;
+		margin:2% auto;
+		position:absolute;
+  	}
 }
-@media screen and (min-width:768px){
+
+@media screen and (max-width:1025px){
+	.hi {
+		display:none;
+	}
+	.tablet {
+		display:block;
+	}
+	.headcontainer{
+		display:none;
+	}
+	.main{
+		display:none;
+	}
+	#userStateOffline, #userStateOnline{
+		display:none;
+	}
+	/*nav.main a{
+		font-size:40px;
+	}*/
+	/*nav.main a span{
+		display:none;
+	}*/
+	/*.navbar{
+		display:none;
+	}
+	nav.main{
+		display:fixed;
+	}*/
+}
+@media screen and (min-width:1026px){
+	.tablet{
+		display:none;
+	}
+	.hi1{
+		display:none;
+	}
+	.hi {
+		display:block;
+	}
 	.he{
 		display:none;
 	}

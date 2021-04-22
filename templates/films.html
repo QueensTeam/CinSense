@@ -63,14 +63,7 @@
 	<div class="mainContent">
 		<section id="movieoftheweek" class="imgbig col-12 col-lg-12">
 			<div class="headcontainer imgbig" >
-
 				<div id="carouselExampleIndicators" class="carousel slide hi imgbig" data-ride="carousel">
-				  <!-- <ol class="carousel-indicators">
-				    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-				    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-				    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-				    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-				  </ol> -->
 				  <div class="carousel-inner imgbig">
 				    <div class="carousel-item active imgbig">
 				    	<!-- <p class="pictext">movie of the week</p> -->
@@ -90,10 +83,11 @@
 				</div>
 			</div>
 		</section>
-		<p id="filterSecText">Filter:</p>
-		<section class="moviefilters col-11 col-sm-11 col-md-11 col-lg-9">
+		
+		<section class="moviefilters col-12 col-sm-12 col-md-11 col-lg-9">
+			<p id="filterSecText">Filter:</p>
 			<form action="">
-				<div>
+				<div class="col-4 col-sm-4 col-lg-2">
 	    		<label for="genre">Genre</label>
 	    		<select id="genre" name="Genre">
 	    			<option value="">-</option>
@@ -110,7 +104,7 @@
 		    	  	<option value="878">Science Fiction</option>
 		      		<option value="53">Thriller</option>
 	    		</select></div>
-	    		<div>
+	    		<div class="col-4 col-sm-4 col-lg-2">
 			    <label for="Decade">Decade</label>
 	    		<select id="decade" name="decade">
 	    			<option value="">-</option>
@@ -127,7 +121,7 @@
 		    	  	<option value="2010">2010s</option>
 		      		<option value="2020">2020s</option>
 	    		</select></div>
-	    		<div>
+	    		<div class="col-4 col-sm-4 col-lg-2">
 	    		<label for="average">Vote average</label>
 	    		<select id="average" name="average">
 	    			<option value="">-</option>
@@ -135,7 +129,7 @@
 		    	  	<option value="6">6-8</option>
 		      		<option value="8">>8</option>
 	    		</select></div>
-	    		<div>
+	    		<div class="col-4 col-sm-4 col-lg-2">
 	    		<label for="votecount">Vote count</label>
 	    		<select id="votecount" name="votecount">
 	    			<option value="">-</option>
