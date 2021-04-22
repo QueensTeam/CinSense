@@ -18,6 +18,7 @@ $(document).ready(function () {
   });
 });
 
+
 window.addEventListener('scroll', () => {
   const {
       scrollTop,
