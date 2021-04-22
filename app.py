@@ -35,7 +35,6 @@ def getFilteredMovies(page, genre):
 
 def getGenres():
     response = requests.get("https://api.themoviedb.org/3/genre/movie/list?api_key=" + os.environ.get('TMDB_API_KEY') + "&language=en-US")
-    print(response.json())
 
 def connectToDB():
     connection = pymysql.connect(host='localhost', user='root', password='', database='cinsense', charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
@@ -51,7 +50,6 @@ def registerUser(login, email, password):
         conn.commit()
         conn.close()
     else:
-        print('This user already exists')
         conn.close()
 
 def token_required(f):
@@ -60,12 +58,10 @@ def token_required(f):
         token = None
         if 'x-access-token' in request.headers:
             token = request.headers['x-access-token']
-            print(token)
         if not token:
             return jsonify({'message': 'Missing token'}), 401
         try:
             data = jwt.decode(token, os.environ.get('SECRET_KEY'))
-            print (data)
             conn = connectToDB()
             cursor = conn.cursor()
             result = cursor.execute("SELECT * FROM user WHERE id=" + str(data['public_id']))
@@ -99,7 +95,8 @@ def verifyUser(password, login = None, email = None):
         return -1
     else:
         return str(rez[0]['id'])
-    def markAsSeen(userId, movieId):
+    
+def markAsSeen(userId, movieId):
     conn = connectToDB()
     cursor = conn.cursor()
     result = cursor.execute("SELECT * FROM interaction WHERE userId='" + str(userId) + "' AND movieId='" + str(movieId) + "'")
@@ -113,12 +110,12 @@ def verifyUser(password, login = None, email = None):
         cursor.execute(query)
         conn.commit()
         conn.close()
-####################
+
 def checkIfSeen(userId, movieId):
     conn = connectToDB()
     cursor = conn.cursor()
-    result = cursor.execute("SELECT * FROM interaction WHERE userId='" + str(userId) + "' AND movieId='" + str(movieId) + "' AND seen = false")
-    conn.commit()
+    query = "SELECT * FROM interaction WHERE userId=" + str(userId) + " AND movieId=" + str(movieId) + " AND seen = 1"
+    result = cursor.execute(query)
     conn.close()
     return result
 
@@ -140,8 +137,8 @@ def markAsWantToSee(userId, movieId):
 def checkIfInWatchlist(userId, movieId):
     conn = connectToDB()
     cursor = conn.cursor()
-    result = cursor.execute("SELECT * FROM interaction WHERE userId='" + str(userId) + "' AND movieId='" + str(movieId) + "' AND wantToSee = false")
-    conn.commit()
+    query = "SELECT * FROM interaction WHERE userId=" + str(userId) + " AND movieId=" + str(movieId) + " AND wantToSee = 1"
+    result = cursor.execute(query)
     conn.close()
     return result
         
@@ -152,7 +149,7 @@ def postSeen(id, userId):
 
 @app.route("/movie/<id>/seen/<userId>",methods = ['GET'])
 def getSeen(id, userId):
-    if(checkIfInWatchlist == 1):
+    if(checkIfInWatchlist(userId, id) == 1):
         return make_response("Seen",200)
     else:
         return make_response("NotSeen",200)
@@ -164,7 +161,7 @@ def postInWatchlist(id, userId):
 
 @app.route("/movie/<id>/watchlist/<userId>",methods = ['GET'])
 def getInWatchlist(id, userId):
-    if(checkIfInWatchlist == 1):
+    if(checkIfInWatchlist(userId, id) == 1):
         return make_response("In watch list",200)
     else:
         return make_response("Not in watchlist", 200)
@@ -248,11 +245,10 @@ def updateAccount():
     if data.get('username'):
         query += "username='" + data.get('username') + "'"
     query += " WHERE id=" + str(get_jwt_identity())  
-    print(data)
-    print(query)
     conn = connectToDB()
     cursor = conn.cursor()
     cursor.execute(query)
     conn.commit()
     conn.close()
     return make_response('Test successful', 200)
+
