@@ -107,9 +107,13 @@ def deleteAccount():
 @jwt_required()
 def updateAccount():
     data = request.form
-    query = "UPDATE user SET "
+    query = "UPDATE user SET"
     if data.get('username'):
-        query += "username='" + data.get('username') + "'"
+        query += " username='" + data.get('username') + "'"
+    if data.get('email'): 
+        query += " email='" + data.get('email') + "'"
+    if data.get('password'):
+        query += " password='" +
     query += " WHERE id=" + str(get_jwt_identity())  
     conn = ca.connectToDB()
     cursor = conn.cursor()
