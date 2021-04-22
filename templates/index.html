@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../static/css/stylemain.css">
 </head>
 <body>
+	<div class="content">
 	<header id="mainhead">
 		<h1 id="title">CinSense</h1>
 		<div class="decline col-12 col-lg-12"></div>
@@ -24,7 +25,7 @@
 			<a class="simple" href="account.html"><span data-hover="Account">Account</span></a>
 			<a class="simple" href="about.html"><span data-hover="About">About</span></a>
 		</nav>
-		<nav class="tablet">
+		<nav class="tablet dontshow">
 			<!-- <span class="simp" onclick="transitionToPage('index.html')">Home</span> -->
 			<a class="simple active" href="index.html">Home</a>
 			<a class="simple" href="films.html" >Films</a>
@@ -42,6 +43,29 @@
 			<a href="./account.html" class=onlineComment>log out</a>
 		</div>
 	</header>
+	<nav class="navbar mb-4">
+	  <a class="navbar-brand hamNav" href="./index.html"><h1 id="title">CinSense</h1></a>
+	  <button class="navbar-toggler first-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent20"
+	    aria-controls="navbarSupportedContent20" aria-expanded="false" aria-label="Toggle navigation">
+	    <div class="animated-icon1"><span></span><span></span><span></span></div>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent20">
+	    <ul class="navbar-nav mr-auto">
+	      <li class="nav-item">
+	        <a class="simple nav-link hamNav" href="./films.html">Films</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link simple hamNav" href="./recommend.html">Recommendation</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link simple hamNav" href="./account.html">Account</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link simple hamNav" href="./about.html">About</a>
+	      </li>
+	    </ul>
+	  </div>
+	</nav>
 
 	<div class="mainContent">
 		<section id="movieoftheweek">
@@ -112,7 +136,8 @@
 				</div>
 			</div>
 		</section>
-	</div>	
+	</div>
+</div>
 	<footer onmouseover="showTheFooter()" onmouseout="showTheFooter()"><p class="" id="footerInfo1">This website was made for educational purposes. 	&#169; QueensTeam 2021</p>
 		<p class="dontshow" id="footerInfo2" >Website creators and owners: <div id="creatorNames" class="dontshow">Dominyka Lupeikytė, Anastasija Vasiljeva, Greta Klimavičiūtė.</div></p></footer>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
