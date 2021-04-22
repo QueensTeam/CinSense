@@ -14,100 +14,102 @@
 </head>
 <body>
 	<div class="content">
-	<header class="head">
-		<h1 id="minititle">CinSense</h1>
-		<div class="decline col-12 col-lg-12"></div>
-		<nav class="main items">
-			<a class="simple" href="index.html"><span data-hover="Home">Home</span></a>
-			<a class="simple" href="films.html" ><span data-hover="Films">Films</span></a>
-			<a class="simple active" href="recommend.html"><span data-hover="Recommendation">Recommendation</span></a>
-			<a class="simple" href="account.html"><span data-hover="Account">Account</span></a>
-			<a class="simple" href="about.html"><span data-hover="About">About</span></a>
+		<header class="head">
+			<h1 id="minititle">CinSense</h1>
+			<div class="decline col-12 col-lg-12"></div>
+			<nav class="main items">
+				<a class="simple" href="index.html"><span data-hover="Home">Home</span></a>
+				<a class="simple" href="films.html" ><span data-hover="Films">Films</span></a>
+				<a class="simple active" href="recommend.html"><span data-hover="Recommendation">Recommendation</span></a>
+				<a class="simple" href="account.html"><span data-hover="Account">Account</span></a>
+				<a class="simple" href="about.html"><span data-hover="About">About</span></a>
+			</nav>
+			<div id="userStateOffline">
+				<a href="account.html" class=offlineTitle>you are offline</a>
+				<a href="account.html" class=offlineComment>login or register!</a>
+			</div>
+			<div id="userStateOnline" class="dontshow">
+				<a href="./account.html" class=onlineTitle>you are online</a>
+				<a href="./account.html" class=onlineComment>log out</a>
+			</div>
+		</header>
+		<nav class="navbar mb-4">
+		  <a class="navbar-brand hamNav" href="index.html"><h1 id="minititle">CinSense</h1></a>
+		  <button class="navbar-toggler first-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent20"
+		    aria-controls="navbarSupportedContent20" aria-expanded="false" aria-label="Toggle navigation">
+		    <div class="animated-icon1"><span></span><span></span><span></span></div>
+		  </button>
+		  <div class="collapse navbar-collapse" id="navbarSupportedContent20">
+		    <ul class="navbar-nav mr-auto">
+		      <li class="nav-item">
+		        <a class="simple nav-link hamNav" href="films.html">Films</a>
+		      </li>
+		      <li class="nav-item active1">
+		        <a class="nav-link simple hamNav" href="recommend.html">Recommendation</a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link simple hamNav" href="account.html">Account</a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link simple hamNav" href="about.html">About</a>
+		      </li>
+		    </ul>
+		  </div>
 		</nav>
-		<div id="userStateOffline">
-			<a href="account.html" class=offlineTitle>you are offline</a>
-			<a href="account.html" class=offlineComment>login or register!</a>
-		</div>
-		<div id="userStateOnline" class="dontshow">
-			<a href="./account.html" class=onlineTitle>you are online</a>
-			<a href="./account.html" class=onlineComment>log out</a>
-		</div>
-	</header>
-	<nav class="navbar mb-4">
-	  <a class="navbar-brand hamNav" href="index.html"><h1 id="minititle">CinSense</h1></a>
-	  <button class="navbar-toggler first-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent20"
-	    aria-controls="navbarSupportedContent20" aria-expanded="false" aria-label="Toggle navigation">
-	    <div class="animated-icon1"><span></span><span></span><span></span></div>
-	  </button>
-	  <div class="collapse navbar-collapse" id="navbarSupportedContent20">
-	    <ul class="navbar-nav mr-auto">
-	      <li class="nav-item">
-	        <a class="simple nav-link hamNav" href="films.html">Films</a>
-	      </li>
-	      <li class="nav-item active1">
-	        <a class="nav-link simple hamNav" href="recommend.html">Recommendation</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link simple hamNav" href="account.html">Account</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link simple hamNav" href="about.html">About</a>
-	      </li>
-	    </ul>
-	  </div>
-	</nav>
-	<h1 id="beatle">Movie Roulette</h1>
-		<p class="seethrough">let us choose a movie you will watch.</p>
-	<div>
-	<div class="mainContent">
-		<p class="randomovie1" id="lemon" onclick="randomovie()">
-		<i class="fas fa-crown"></i></p>
-	<p class="randomovie2" id="lemon2" onclick="randomovie()"><i class="fas fa-crown"></i></p>
-	<section class="list">
-		<!-- <span onclick="transitionToPage('https://www.imdb.com/title/tt0024034/?ref_=nv_sr_srsg_0')"><p class="ltitle">42nd Street (1933)</p><img  src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/q4UEd8BL74zVsOOaJkKVMLMmdTg.jpg" alt="" title="42nd Street (1933)" class="lpic"/></span> -->
-		<div onclick="transitionToPage('https://www.imdb.com/title/tt0056801/?ref_=nv_sr_srsg_4')"> <p class="ltitle">8 1/2 (1963)</p>
-		<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/9wvOlM8f3obvG9tNTkpZvF0CUU1.jpg" alt="" title="8 1/2 (1963)" class="lpic col-12 col-lg-5"/></div>
+		<h1 id="beatle">Movie Roulette</h1>
+			<p class="seethrough">let us choose a movie you will watch.</p>
+		<div>
+		<div class="mainContent">
+			<p class="randomovie1" id="lemon" onclick="randomovie()"><i class="fas fa-crown"></i></p>
+			<p class="randomovie2" id="lemon2" onclick="randomovie()"><i class="fas fa-crown"></i></p>
+			
+			<section class="list">
+				<div onclick="transitionToPage('https://www.imdb.com/title/tt0056801/?ref_=nv_sr_srsg_4')"> <p class="ltitle">8 1/2 (1963)</p>
+				<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/9wvOlM8f3obvG9tNTkpZvF0CUU1.jpg" alt="" title="8 1/2 (1963)" class="lpic col-12 col-lg-5"/></div>
 
-		<div onclick="transitionToPage('https://www.imdb.com/title/tt0088680/?ref_=nv_sr_srsg_0')"><p class="ltitle">After Hours (1985)</p>
-		<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/1mh5QtpNYpHp3SQ2Bkj4dnmX0bA.jpg" alt="" title="After Hours (1985)" class="col-12  col-lg-5 lpic "/>
-		</div>
-		<div onclick="transitionToPage('https://www.imdb.com/title/tt0067961/?ref_=fn_al_tt_2')"><p class="ltitle">Wanda (1970)</p>
-		<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/izuJ7cUhcihFnTpfsdSnkMCHsRQ.jpg" alt="" title="Wanda (1970)" class="lpic col-12  col-lg-5"/>
-		</div>
-		<div onclick="transitionToPage('https://www.imdb.com/title/tt0068327/?ref_=nv_sr_srsg_0')"><p class="ltitle">Cabaret (1972)</p>
-		<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/1RmUfX3LcS897GhUWrWp5nRADo4.jpg" alt="" title="Cabaret (1972)" class="lpic col-12 col-lg-5"/>
-		</div>
-		<div onclick="transitionToPage('https://www.imdb.com/title/tt0074901/?ref_=nv_sr_srsg_0')"><p class="ltitle">Mikey And Nicky (1976)</p>
-		<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/fnHC1OJ1EbdOX97nmXVYrXFgiQT.jpg" alt="" title="Mikey And Nicky (1976)" class="lpic col-12  col-lg-5"/>
-		</div>
-		<div onclick="transitionToPage('https://www.imdb.com/title/tt0101985/?ref_=nv_sr_srsg_0')"><p class="ltitle">A Brighter Summer Day (1991)</p>
-		<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/3l8fOAwiN3N5n3hHnZ51eog7Zu2.jpg" alt="" title="A Brighter Summer Day (1991)" class="col-12  col-lg-5 lpic"/>
-		</div>
-		<div onclick="transitionToPage('https://www.imdb.com/title/tt0388667/?ref_=nv_sr_srsg_4')"><p class="ltitle">2000 Year Old Man (1975)</p>
-		<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/pDRIVh79fYFlGv75o2QOP98T6BM.jpg" alt="" title="2000 Year Old Man (1975)" class="lpic col-12  col-lg-5"/>
-		</div>
-		<div onclick="transitionToPage('https://www.imdb.com/title/tt0073629/?ref_=nv_sr_srsg_0')"><p class="ltitle">The Rocky Horror Picture Show (1975)</p>
-		<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/8QCNX4oxfO7xyASvJ0fnTFrqXsC.jpg" alt="" title="The Rocky Horror Picture Show (1975)" class="col-12  col-lg-5 lpic"/>
-		</div>
-		<div onclick="transitionToPage('https://www.imdb.com/title/tt0062695/?ref_=nv_sr_srsg_0')"><p class="ltitle">Stolen Kisses (1968)</p>
-		<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/5qHh1Vp2TOOX5IaTVt4wyT8OTnR.jpg" alt="" title="Stolen Kisses (1968)" class="col-12 col-lg-5 lpic"/>
-		</div>
-		<div onclick="transitionToPage('https://www.imdb.com/title/tt0046828/?ref_=nv_sr_srsg_0')"><p class="ltitle">Carmen Jones (1954)</p>
-		<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/5Vo4NeE7dlXBUaikbGnUOmUNHJ3.jpg" alt="" title="Carmen Jones (1954)" class="col-12  col-lg-5 lpic"/>
-		</div>
-		<div onclick="transitionToPage('https://www.imdb.com/title/tt0038890/?ref_=nv_sr_srsg_0')"><p class="ltitle">Rome: Open City (1945)</p>
-		<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/ijGV4v8JxgbNzgEhqKdzHdaZn8a.jpg" alt="" title="Rome: Open City (1945)" class="col-12  col-lg-5 lpic"/></div>
-	</section>
-</div>
-</div>
-<footer onmouseover="showTheFooter()" onmouseout="showTheFooter()"><p class="" id="footerInfo1">This website was made for educational purposes. 	&#169; QueensTeam 2021</p>
-		<p class="dontshow" id="footerInfo2" >Website creators and owners: <div id="creatorNames" class="dontshow">Dominyka Lupeikytė, Anastasija Vasiljeva, Greta Klimavičiūtė.</div></p></footer>
-	<!-- <footer>
-		<p id="credit" class="col-11 col-sm-5 col-md-5 col-lg-3">This page was made by Dominyka</p>
-	</footer> -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+				<div onclick="transitionToPage('https://www.imdb.com/title/tt0088680/?ref_=nv_sr_srsg_0')"><p class="ltitle">After Hours (1985)</p>
+				<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/1mh5QtpNYpHp3SQ2Bkj4dnmX0bA.jpg" alt="" title="After Hours (1985)" class="col-12  col-lg-5 lpic "/>
+				</div>
+				<div onclick="transitionToPage('https://www.imdb.com/title/tt0067961/?ref_=fn_al_tt_2')"><p class="ltitle">Wanda (1970)</p>
+				<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/izuJ7cUhcihFnTpfsdSnkMCHsRQ.jpg" alt="" title="Wanda (1970)" class="lpic col-12  col-lg-5"/>
+				</div>
+				<div onclick="transitionToPage('https://www.imdb.com/title/tt0068327/?ref_=nv_sr_srsg_0')"><p class="ltitle">Cabaret (1972)</p>
+				<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/1RmUfX3LcS897GhUWrWp5nRADo4.jpg" alt="" title="Cabaret (1972)" class="lpic col-12 col-lg-5"/>
+				</div>
+				<div onclick="transitionToPage('https://www.imdb.com/title/tt0074901/?ref_=nv_sr_srsg_0')"><p class="ltitle">Mikey And Nicky (1976)</p>
+				<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/fnHC1OJ1EbdOX97nmXVYrXFgiQT.jpg" alt="" title="Mikey And Nicky (1976)" class="lpic col-12  col-lg-5"/>
+				</div>
+				<div onclick="transitionToPage('https://www.imdb.com/title/tt0101985/?ref_=nv_sr_srsg_0')"><p class="ltitle">A Brighter Summer Day (1991)</p>
+				<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/3l8fOAwiN3N5n3hHnZ51eog7Zu2.jpg" alt="" title="A Brighter Summer Day (1991)" class="col-12  col-lg-5 lpic"/>
+				</div>
+				<div onclick="transitionToPage('https://www.imdb.com/title/tt0388667/?ref_=nv_sr_srsg_4')"><p class="ltitle">2000 Year Old Man (1975)</p>
+				<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/pDRIVh79fYFlGv75o2QOP98T6BM.jpg" alt="" title="2000 Year Old Man (1975)" class="lpic col-12  col-lg-5"/>
+				</div>
+				<div onclick="transitionToPage('https://www.imdb.com/title/tt0073629/?ref_=nv_sr_srsg_0')"><p class="ltitle">The Rocky Horror Picture Show (1975)</p>
+				<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/8QCNX4oxfO7xyASvJ0fnTFrqXsC.jpg" alt="" title="The Rocky Horror Picture Show (1975)" class="col-12  col-lg-5 lpic"/>
+				</div>
+				<div onclick="transitionToPage('https://www.imdb.com/title/tt0062695/?ref_=nv_sr_srsg_0')"><p class="ltitle">Stolen Kisses (1968)</p>
+				<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/5qHh1Vp2TOOX5IaTVt4wyT8OTnR.jpg" alt="" title="Stolen Kisses (1968)" class="col-12 col-lg-5 lpic"/>
+				</div>
+				<div onclick="transitionToPage('https://www.imdb.com/title/tt0046828/?ref_=nv_sr_srsg_0')"><p class="ltitle">Carmen Jones (1954)</p>
+				<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/5Vo4NeE7dlXBUaikbGnUOmUNHJ3.jpg" alt="" title="Carmen Jones (1954)" class="col-12  col-lg-5 lpic"/>
+				</div>
+				<div onclick="transitionToPage('https://www.imdb.com/title/tt0038890/?ref_=nv_sr_srsg_0')"><p class="ltitle">Rome: Open City (1945)</p>
+				<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/ijGV4v8JxgbNzgEhqKdzHdaZn8a.jpg" alt="" title="Rome: Open City (1945)" class="col-12  col-lg-5 lpic"/></div>
+			</section>
+		</div>	
+	</div>
+
+	<footer onmouseover="showTheFooter()" onmouseout="showTheFooter()">
+		<p class="" id="footerInfo1">This website was made for educational purposes. 	&#169; QueensTeam 2021</p>
+		<p class="dontshow" id="footerInfo2" >Website creators and owners: 
+			<div id="creatorNames" class="dontshow">Dominyka Lupeikytė, Anastasija Vasiljeva, Greta Klimavičiūtė.</div>
+		</p>
+	</footer>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 	<script src="../static/js/script.js"></script>
 	<script src="https://kit.fontawesome.com/2cd86d0939.js" crossorigin="anonymous"></script>
 </body>

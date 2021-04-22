@@ -14,115 +14,113 @@
 </head>
 <body>
 	<div class="content">
-	<header class="head">
-		<h1 id="minititle">CinSense</h1>
-		<div class="decline col-12 col-lg-12"></div>
-		<nav class="main items">
-			<a class="simple" href="./index.html"><span data-hover="Home">Home</span></a>
-			<a class="simple" href="./films.html" ><span data-hover="Films">Films</span></a>
-			<a class="simple" href="./recommend.html"><span data-hover="Recommendation">Recommendation</span></a>
-			<a class="simple active" href="./account.html"><span data-hover="Account">Account</span></a>
-			<a class="simple" href="./about.html"><span data-hover="About">About</span></a>
+		<header class="head">
+			<h1 id="minititle">CinSense</h1>
+			<div class="decline col-12 col-lg-12"></div>
+			<nav class="main items">
+				<a class="simple" href="./index.html"><span data-hover="Home">Home</span></a>
+				<a class="simple" href="./films.html" ><span data-hover="Films">Films</span></a>
+				<a class="simple" href="./recommend.html"><span data-hover="Recommendation">Recommendation</span></a>
+				<a class="simple active" href="./account.html"><span data-hover="Account">Account</span></a>
+				<a class="simple" href="./about.html"><span data-hover="About">About</span></a>
+			</nav>
+			<div id="userStateOffline">
+			<a href="account.html" class=offlineTitle>you are offline</a>
+			<a href="account.html" class=offlineComment>login or register!</a>
+			</div>
+			<div id="userStateOnline" class="dontshow">
+				<a href="./account.html" class=onlineTitle>you are online</a>
+				<a href="./account.html" class=onlineComment>log out</a>
+			</div>
+
+		</header>
+		<div id="changeUserStateButton" onclick="changeUserState()" class="">Press to change the view</div>
+		<nav class="navbar mb-4">
+		  <a class="navbar-brand hamNav" href="./index.html"><h1 id="minititle">CinSense</h1></a>
+		  <button class="navbar-toggler first-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent20"
+		    aria-controls="navbarSupportedContent20" aria-expanded="false" aria-label="Toggle navigation">
+		    <div class="animated-icon1"><span></span><span></span><span></span></div>
+		  </button>
+		  <div class="collapse navbar-collapse" id="navbarSupportedContent20">
+		    <ul class="navbar-nav mr-auto">
+		      <li class="nav-item">
+		        <a class="simple nav-link hamNav" href="./films.html">Films</a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link simple hamNav" href="./recommend.html">Recommendation</a>
+		      </li>
+		      <li class="nav-item active1">
+		        <a class="nav-link simple hamNav" href="./account.html">Account</a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link simple hamNav" href="./about.html">About</a>
+		      </li>
+		    </ul>
+		  </div>
 		</nav>
-		<div id="userStateOffline">
-		<a href="account.html" class=offlineTitle>you are offline</a>
-		<a href="account.html" class=offlineComment>login or register!</a>
-		</div>
-		<div id="userStateOnline" class="dontshow">
-			<a href="./account.html" class=onlineTitle>you are online</a>
-			<a href="./account.html" class=onlineComment>log out</a>
-		</div>
 
-	</header>
-	<div id="changeUserStateButton" onclick="changeUserState()" class="">Press to change the view</div>
-	<nav class="navbar mb-4">
-	  <a class="navbar-brand hamNav" href="./index.html"><h1 id="minititle">CinSense</h1></a>
-	  <button class="navbar-toggler first-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent20"
-	    aria-controls="navbarSupportedContent20" aria-expanded="false" aria-label="Toggle navigation">
-	    <div class="animated-icon1"><span></span><span></span><span></span></div>
-	  </button>
-	  <div class="collapse navbar-collapse" id="navbarSupportedContent20">
-	    <ul class="navbar-nav mr-auto">
-	      <li class="nav-item">
-	        <a class="simple nav-link hamNav" href="./films.html">Films</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link simple hamNav" href="./recommend.html">Recommendation</a>
-	      </li>
-	      <li class="nav-item active1">
-	        <a class="nav-link simple hamNav" href="./account.html">Account</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link simple hamNav" href="./about.html">About</a>
-	      </li>
-	    </ul>
-	  </div>
-	</nav>
+		<section id="offlineUser" class="col-12 col-sm-12 col-md-12 col-lg-9">
+			<h1 id="beatle">Offline User Detected</h1>
+			<p class="seethrough">you need to login or register in order to access this page</p>
+			<div id="registerButton" onclick="openRegister()" class="col-sm-12 col-md-7 col-lg-6">Register</div>
+			<div id="loginButton" onclick="openLogin()" class="col-sm-12 col-md-7 col-lg-6">Login</div>
+			<div id="registerForm" class="col-12 col-lg-4 dontshow">
+				
+	  			<form action="/register" method = "POST" enctype="multipart/form-data" >
+	   				<label for="username">Username</label>
+	  		  		<input type="text" id="registration_username" name="registration_username" placeholder="Your username" required>
 
-	<section id="offlineUser" class="col-12 col-sm-12 col-md-12 col-lg-9">
-		<!-- <div></div> -->
-		<!-- <div></div> -->
-		<h1 id="beatle">Offline User Detected</h1>
-		<p class="seethrough">you need to login or register in order to access this page</p>
-		<div id="registerButton" onclick="openRegister()" class="col-sm-12 col-md-7 col-lg-6">Register</div>
-		<div id="loginButton" onclick="openLogin()" class="col-sm-12 col-md-7 col-lg-6">Login</div>
-		<div id="registerForm" class="col-12 col-lg-4 dontshow">
-			
-  			<form action="/register" method = "POST" enctype="multipart/form-data" >
-   				<label for="username">Username</label>
-  		  		<input type="text" id="registration_username" name="registration_username" placeholder="Your username" required>
+	    			<label for="email">Email</label>
+	    			<input type="text" id="registration_email" name="registration_email" placeholder="Your email" required>
 
-    			<label for="email">Email</label>
-    			<input type="text" id="registration_email" name="registration_email" placeholder="Your email" required>
+	    			<label for="password">Password</label>
+	   				<input type="password" id="registration_password" name="registration_password" placeholder="Your password" required>
+	  
+	    			<input type="submit" value="Register">
+	    			<label for="login" onclick="openLogin()" class="right1">Login instead</label>
+	 			</form>
+			</div>
+			<div id="loginForm" class="col-12 col-lg-4 dontshow">
 
-    			<label for="password">Password</label>
-   				<input type="password" id="registration_password" name="registration_password" placeholder="Your password" required>
-  
-    			<input type="submit" value="Register">
-    			<label for="login" onclick="openLogin()" class="right1">Login instead</label>
- 			</form>
-		</div>
-		<div id="loginForm" class="col-12 col-lg-4 dontshow">
+	  			<form action="">
+	   				<label for="username">Username/Email</label>
+	  		  		<input type="text" id="username" name="Username" placeholder="Your username or email" required>
 
-  			<form action="">
-   				<label for="username">Username/Email</label>
-  		  		<input type="text" id="username" name="Username" placeholder="Your username or email" required>
+	    			<label for="password">Password</label>
+	   				<input type="password" id="password" name="password" placeholder="Your password" required>
+	  
+	    			<input type="submit" value="Login">
+	    			<label for="login" onclick="openRegister()" class="right1">Register instead</label>
+	 			</form>
+			</div>
+		</section>
+		<section id="onlineUser" class="dontshow">
+			<div id="profileForm" class="col-12 col-lg-9">
+				
+	  			<form action="/">
+	  				<input type="image" id="userImage" src="../static/img/drew.jpg" alt="Image Submission" width="150" height="150" class="rounded-circle">
 
-    			<label for="password">Password</label>
-   				<input type="password" id="password" name="password" placeholder="Your password" required>
-  
-    			<input type="submit" value="Login">
-    			<label for="login" onclick="openRegister()" class="right1">Register instead</label>
- 			</form>
-		</div>
-	</section>
-	<section id="onlineUser" class="dontshow">
-		<div id="profileForm" class="col-12 col-lg-9">
-			
-  			<form action="/">
-  				<input type="image" id="userImage" src="../static/img/drew.jpg" alt="Image Submission" width="150" height="150" class="rounded-circle">
+	   				<label for="username">Username</label>
+	  		  		<input type="text" id="username" name="Username" placeholder="Your username" required>
 
-   				<label for="username">Username</label>
-  		  		<input type="text" id="username" name="Username" placeholder="Your username" required>
+	    			<label for="email">Email</label>
+	    			<input type="text" id="email" name="email" placeholder="Your email" required>
 
-    			<label for="email">Email</label>
-    			<input type="text" id="email" name="email" placeholder="Your email" required>
+	    			<label for="birthday">Birthday</label>
+					<input type="date" id="birthday" name="birthday">
 
-    			<label for="birthday">Birthday</label>
-				<input type="date" id="birthday" name="birthday">
-
-    			<label for="password">Password</label>
-   				<input type="password" id="password" name="password" placeholder="Your password" required>
-  				
-    			<input type="submit" value="Save" id=saveButton>
-    			<label for="" onclick="" class="left1">Delete account</label>
- 			</form>
-		</div>
-	</section>
-</div>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+	    			<label for="password">Password</label>
+	   				<input type="password" id="password" name="password" placeholder="Your password" required>
+	  				
+	    			<input type="submit" value="Save" id="saveButton">
+	    			<label for="" onclick="" class="left1">Delete account</label>
+	 			</form>
+			</div>
+		</section>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
 	<script src="../static/js/script.js"></script>
 </body>
 </html>
