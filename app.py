@@ -10,7 +10,7 @@ import json
 import jwt
 from datetime import datetime, timedelta, timezone
 from functools import wraps
-from flask_jwt_extended import create_access_token, get_jwt_identity, JWTManager, get_jwt, jwt_required, set_access_cookies
+from flask_jwt_extended import create_access_token, get_jwt_identity, JWTManager, get_jwt, jwt_required, set_access_cookies, unset_access_cookies
 
 load_dotenv()
 app = Flask(__name__)
@@ -175,15 +175,13 @@ def login():
         access_token = create_access_token(identity=user)
         return jsonify(access_token=access_token)      
 
-@app.after_request
-def refresh_expiring_jwts(response):
-    try:
-        exp_timestamp = get_jwt()["exp"]
-        now = datetime.now(timezone.utc)
-        target_timestamp = datetime.timestamp(now + timedelta(minutes=5))
-        if target_timestamp > exp_timestamp:
-            access_token = create_access_token(identity=get_jwt_identity())
-            set_access_cookies(response, access_token)
-        return response
-    except (RuntimeError, KeyError):
-        return response
+@app.route('/deleteAccount', methods = ['DELETE'])
+@jwt_required()
+def deleteAccount():
+    user = get_jwt_identity()
+    conn = connectToDB()
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM user WHERE id=" + str(user))
+    conn.commit()
+    conn.close()
+    return make_response('User successfully deleted', 200)
