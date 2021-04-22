@@ -223,6 +223,24 @@ function showTheFooter(){
   }
 }
 
+function changeUserState(){
+  var onlineState = document.getElementById("userStateOnline");
+  var offlineState = document.getElementById("userStateOffline");
+
+  var accountOnline = document.getElementById("onlineUser");
+  var accountOffline = document.getElementById("offlineUser");
+  if(onlineState.classList.contains("dontshow")){
+    onlineState.classList.remove("dontshow");
+    accountOnline.classList.remove("dontshow");
+    offlineState.classList.add("dontshow");
+    accountOffline.classList.add("dontshow");
+  } else if (offlineState.classList.contains("dontshow")){
+    onlineState.classList.add("dontshow");
+    accountOnline.classList.add("dontshow");
+    offlineState.classList.remove("dontshow");
+    accountOffline.classList.remove("dontshow");
+  } 
+}
 
 
  // function registerValidation() {
