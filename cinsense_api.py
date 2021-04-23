@@ -88,6 +88,7 @@ def verifyUser(password, login = None, email = None):
     query += "' and password='" + psw_hash + "'"
     result = cursor.execute(query)
     rez = cursor.fetchall()
+    conn.close()
     if (result == 0):
         return -1
     else:

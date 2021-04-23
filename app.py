@@ -1,10 +1,8 @@
 from flask import Flask, render_template, request, jsonify, make_response
 import requests
 import mysql.connector
-import uuid
 from dotenv import load_dotenv
 import os
-from hashlib import sha256
 import pymysql
 import json
 import jwt
