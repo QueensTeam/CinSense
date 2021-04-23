@@ -15,30 +15,6 @@ load_dotenv()
 app = Flask(__name__)
 app.config["JWT_SECRET_KEY"] = os.environ.get('SECRET_KEY') 
 jwt = JWTManager(app)
-
-@app.route("/movie/<id>/seen/<userId>",methods = ['POST'])
-def postSeen(id, userId):
-    ca.markAsSeen(userId, id)
-    return make_response("Success",200)
-
-@app.route("/movie/<id>/seen/<userId>",methods = ['GET'])
-def getSeen(id, userId):
-    if(ca.checkIfInWatchlist(userId, id) == 1):
-        return make_response("Seen",200)
-    else:
-        return make_response("NotSeen",200)
-
-@app.route("/movie/<id>/watchlist/<userId>",methods = ['POST'])
-def postInWatchlist(id, userId):
-    ca.markAsWantToSee(userId, id)
-    return make_response("Success",200)
-
-@app.route("/movie/<id>/watchlist/<userId>",methods = ['GET'])
-def getInWatchlist(id, userId):
-    if(ca.checkIfInWatchlist(userId, id) == 1):
-        return make_response("In watch list",200)
-    else:
-        return make_response("Not in watchlist", 200)
         
 @app.route("/index.html")
 def home():    
@@ -119,3 +95,44 @@ def updateAccount():
     conn.commit()
     conn.close()
     return make_response('Test successful', 200)
+
+@app.route("/movie/seen",methods = ['POST', 'PUT'])
+def markSeen():
+    data = request.form
+    if(request.method == 'POST'):
+        ca.markAsSeen(data.get("userId"), data.get("movieId"))
+        return make_response("Success",200)
+    else:
+        ca.updateSeen(data.get("userId"), data.get("movieId"), data.get("seen"))
+        return make_response("Success",200)
+
+@app.route("/movie/<id>/checkIfInInteraction/<userId>",methods = ['GET'])
+def checkIfInInteraction(id, userId):
+    if(ca.checkIfAlreadyInInteractionsTable(userId, id) == 1):
+        return make_response("Already in table",200)
+    else:
+        return make_response("Not in the table yet",200)
+
+@app.route("/movie/<id>/seen/<userId>",methods = ['GET'])
+def getSeen(id, userId):
+    if(ca.checkIfSeen(userId, id) == 1):
+        return make_response("Seen",200)
+    else:
+        return make_response("NotSeen",200)
+
+@app.route("/movie/watchlist",methods = ['POST', 'PUT'])
+def markInWatchlist():
+    data = request.form
+    if(request.method == 'POST'):
+        ca.markAsWantToSee(data.get("userId"), data.get("movieId"))
+        return make_response("Success",200)
+    else:
+        ca.updateWatchlist(data.get("userId"), data.get("movieId"), data.get("wantToSee"))
+        return make_response("Success",200)
+
+@app.route("/movie/<id>/watchlist/<userId>",methods = ['GET'])
+def getInWatchlist(id, userId):
+    if(ca.checkIfInWatchlist(userId, id) == 1):
+        return make_response("In watch list",200)
+    else:
+        return make_response("Not in watchlist", 200)

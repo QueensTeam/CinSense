@@ -94,20 +94,29 @@ def verifyUser(password, login = None, email = None):
     else:
         return str(rez[0]['id'])
     
+def checkIfAlreadyInInteractionsTable(userId, movieId):
+    conn = connectToDB()
+    cursor = conn.cursor()
+    result = cursor.execute("SELECT * FROM interaction WHERE userId=" + str(userId) + " AND movieId=" + str(movieId) + "")
+    conn.commit()
+    conn.close()
+    return result
+    
 def markAsSeen(userId, movieId):
     conn = connectToDB()
     cursor = conn.cursor()
-    result = cursor.execute("SELECT * FROM interaction WHERE userId='" + str(userId) + "' AND movieId='" + str(movieId) + "'")
-    if(result == 0):
-        query = "INSERT INTO interaction (seen, wantToSee, movieId, userId) VALUES (true, false, " + str(movieId) + ", " + str(userId) + ")"
-        cursor.execute(query)
-        conn.commit()
-        conn.close()
-    elif(result == 1):
-        query = "UPDATE interaction SET seen = true WHERE userId='" + str(userId) + "' AND movieId='" + str(movieId) + "'"
-        cursor.execute(query)
-        conn.commit()
-        conn.close()
+    query = "INSERT INTO interaction (seen, wantToSee, movieId, userId) VALUES (true, false, " + str(movieId) + ", " + str(userId) + ")"
+    cursor.execute(query)
+    conn.commit()
+    conn.close()
+
+def updateSeen(userId, movieId, seen):
+    conn = connectToDB()
+    cursor = conn.cursor()
+    query = "UPDATE interaction SET seen = " + str(seen) + " WHERE userId=" + str(userId) + " AND movieId=" + str(movieId) + ""
+    cursor.execute(query)
+    conn.commit()
+    conn.close()
 
 def checkIfSeen(userId, movieId):
     conn = connectToDB()
@@ -120,17 +129,18 @@ def checkIfSeen(userId, movieId):
 def markAsWantToSee(userId, movieId):
     conn = connectToDB()
     cursor = conn.cursor()
-    result = cursor.execute("SELECT * FROM interaction WHERE userId='" + str(userId) + "' AND movieId='" + str(movieId) + "'")
-    if(result == 0):
-        query = "INSERT INTO interaction (seen, wantToSee, movieId, userId) VALUES (false, true, " + str(movieId) + ", " + str(userId) + ")"
-        cursor.execute(query)
-        conn.commit()
-        conn.close()
-    elif(result == 1):
-        query = "UPDATE interaction SET wantToSee = false WHERE userId='" + str(userId) + "' AND movieId='" + str(movieId) + "'"
-        cursor.execute(query)
-        conn.commit()
-        conn.close()    
+    query = "INSERT INTO interaction (seen, wantToSee, movieId, userId) VALUES (false, true, " + str(movieId) + ", " + str(userId) + ")"
+    cursor.execute(query)
+    conn.commit()
+    conn.close() 
+
+def updateWatchlist(userId, movieId, wantToWatch):
+    conn = connectToDB()
+    cursor = conn.cursor()
+    query = "UPDATE interaction SET wantToSee = " + str(wantToWatch) + " WHERE userId=" + str(userId) + " AND movieId=" + str(movieId) + ""
+    cursor.execute(query)
+    conn.commit()
+    conn.close()
 
 def checkIfInWatchlist(userId, movieId):
     conn = connectToDB()
@@ -139,4 +149,3 @@ def checkIfInWatchlist(userId, movieId):
     result = cursor.execute(query)
     conn.close()
     return result
-        
