@@ -85,10 +85,14 @@ const loadMovies = async (page, url) => {
   }
 };
 
+
 const openMovie = async (value) => {
   try {
     response = await $.get("/movie/" + value);
+    imdb = await $.get("/imdb/" + value);
     console.log(response);
+    console.log(value);
+    console.log(imdb);
     genres = response.genres;
     genre = "";
     var i;
@@ -96,8 +100,8 @@ const openMovie = async (value) => {
       genre += genres[i].name;
       if (i != genres.length - 1) genre += ", ";
     }
-    activeMovie = " <div class=\"activeContainer col-11 col-lg-6\"><a href=\"\" onclick=\"closeActiveWindow()\"><i class=\"fas fa-times\"></i></a><span onclick=\"transitionToPage('https://www.imdb.com/title/tt0024034/?ref_=nv_sr_srsg_0')\"><img  src=\"https://image.tmdb.org/t/p/w600_and_h900_bestv2/" + response.poster_path.substring(1) + "\" alt=\"\" title=\" " + response.title + "\" class=\"col-5 col-sm-5 col-lg-5 mov\"/></span><span class=\"movieInfo\"><p id=\"movieYourVote\"><div class=\"star-rating\"><input type=\"radio\" id=\"10-stars\" name=\"rating\" value=\"10\" /><label for=\"10-stars\" class=\"star\">&#9733;</label><input type=\"radio\" id=\"9-stars\" name=\"rating\" value=\"9\" /><label for=\"9-stars\" class=\"star\">&#9733;</label><input type=\"radio\" id=\"8-stars\" name=\"rating\" value=\"8\" /><label for=\"8-stars\" class=\"star\">&#9733;</label><input type=\"radio\" id=\"7-stars\" name=\"rating\" value=\"7\" /><label for=\"7-stars\" class=\"star\">&#9733;</label><input type=\"radio\" id=\"6-star\" name=\"rating\" value=\"6\" /><label for=\"6-star\" class=\"star\">&#9733;</label><input type=\"radio\" id=\"5-stars\" name=\"rating\" value=\"5\" /><label for=\"5-stars\" class=\"star\">&#9733;</label><input type=\"radio\" id=\"4-stars\" name=\"rating\" value=\"4\" /><label for=\"4-stars\" class=\"star\">&#9733;</label><input type=\"radio\" id=\"3-stars\" name=\"rating\" value=\"3\" /><label for=\"3-stars\" class=\"star\">&#9733;</label><input type=\"radio\" id=\"2-stars\" name=\"rating\" value=\"2\" /><label for=\"2-stars\" class=\"star\">&#9733;</label><input type=\"radio\" id=\"1-star\" name=\"rating\" value=\"1\" /><label for=\"1-star\" class=\"star\">&#9733;</label></div></p><div><p id=\"movieTitle\">" + response.title + "</p><p id=\"movieYear\">" + response.release_date.substring(0, 4) + "</p></div><div><p id=\"uncheckedWatchlist\" onclick=\"checkWatchlist()\"><i class=\"far fa-clock\"></i></p><p id=\"checkedWatchlist\" onclick=\"uncheckWatchlist()\" class=\"dontshow\"><i class=\"fas fa-clock\"></i></p><p id=\"uncheckedSeen\" onclick=\"checkSeen()\"><i class=\"far fa-check-circle\"></i></p><p id=\"checkedSeen\" onclick=\"uncheckSeen()\" class=\"dontshow\"><i class=\"fas fa-check-circle\"></i></p></div><p id=\"movieGenre\">" + genre + "</p><p id=\"movieSummary\">" + response.overview + "</p><div id=\"tmdbInfo\"><img src=\"https://play-lh.googleusercontent.com/bBT7rPEvIr2tvzaXcoIdxeeFd8GNUbpWVl94tmiWOwrzwbjMwzDwyhNvAIl5t37u0c8\" width='50px' alt=\"TMDB logo\"/><p id=\"movieVoteAverage\" alt=\"Average movie rating\">" + response.vote_average + "</p><p id=\"movieVoteCount\" alt=\"Movie rating count\">" + response.vote_count +" votes</p></div></span></div>";
-          $("#activeMovie").append(activeMovie);
+    activeMovie = " <div class=\"activeContainer col-11 col-lg-6\"><a href=\"\" onclick=\"closeActiveWindow()\"><i class=\"fas fa-times\"></i></a><span onclick=\"transitionToPage('" + imdb + "')\"><img  src=\"https://image.tmdb.org/t/p/w600_and_h900_bestv2/" + response.poster_path.substring(1) + "\" alt=\"\" title=\" " + response.title + "\" class=\"col-5 col-sm-5 col-lg-5 mov\"/></span><span class=\"movieInfo\"><p id=\"movieYourVote\"><div class=\"star-rating\"><input type=\"radio\" id=\"10-stars\" name=\"rating\" value=\"10\" /><label for=\"10-stars\" class=\"star\">&#9733;</label><input type=\"radio\" id=\"9-stars\" name=\"rating\" value=\"9\" /><label for=\"9-stars\" class=\"star\">&#9733;</label><input type=\"radio\" id=\"8-stars\" name=\"rating\" value=\"8\" /><label for=\"8-stars\" class=\"star\">&#9733;</label><input type=\"radio\" id=\"7-stars\" name=\"rating\" value=\"7\" /><label for=\"7-stars\" class=\"star\">&#9733;</label><input type=\"radio\" id=\"6-star\" name=\"rating\" value=\"6\" /><label for=\"6-star\" class=\"star\">&#9733;</label><input type=\"radio\" id=\"5-stars\" name=\"rating\" value=\"5\" /><label for=\"5-stars\" class=\"star\">&#9733;</label><input type=\"radio\" id=\"4-stars\" name=\"rating\" value=\"4\" /><label for=\"4-stars\" class=\"star\">&#9733;</label><input type=\"radio\" id=\"3-stars\" name=\"rating\" value=\"3\" /><label for=\"3-stars\" class=\"star\">&#9733;</label><input type=\"radio\" id=\"2-stars\" name=\"rating\" value=\"2\" /><label for=\"2-stars\" class=\"star\">&#9733;</label><input type=\"radio\" id=\"1-star\" name=\"rating\" value=\"1\" /><label for=\"1-star\" class=\"star\">&#9733;</label></div></p><div><p id=\"movieTitle\">" + response.title + "</p><p id=\"movieYear\">" + response.release_date.substring(0, 4) + "</p></div><div><p id=\"uncheckedWatchlist\" onclick=\"checkWatchlist()\"><i class=\"far fa-clock\"></i></p><p id=\"checkedWatchlist\" onclick=\"uncheckWatchlist()\" class=\"dontshow\"><i class=\"fas fa-clock\"></i></p><p id=\"uncheckedSeen\" onclick=\"checkSeen()\"><i class=\"far fa-check-circle\"></i></p><p id=\"checkedSeen\" onclick=\"uncheckSeen()\" class=\"dontshow\"><i class=\"fas fa-check-circle\"></i></p></div><p id=\"movieGenre\">" + genre + "</p><p id=\"movieSummary\">" + response.overview + "</p><div id=\"tmdbInfo\"><img src=\"https://play-lh.googleusercontent.com/bBT7rPEvIr2tvzaXcoIdxeeFd8GNUbpWVl94tmiWOwrzwbjMwzDwyhNvAIl5t37u0c8\" width='50px' alt=\"TMDB logo\"/><p id=\"movieVoteAverage\" alt=\"Average movie rating\">" + response.vote_average + "</p><p id=\"movieVoteCount\" alt=\"Movie rating count\">" + response.vote_count +" votes</p></div></span></div>";
+    $("#activeMovie").append(activeMovie);
   }
   catch (error) {
     console.log(error.message);
@@ -109,12 +113,22 @@ function closeActiveWindow(){
   $("#activeMovie").innerHTML=``;
 }
 
-window.transitionToPage = function(href) {
-    document.querySelector('body').style.opacity = 0
-    setTimeout(function() { 
-        window.location.href = href
-    }, 0)
+const openSources = async (id) => {
+  try {
+    
+    console.log(response);
+  }
+  catch(error){
+    console.log(error)
+  }
 }
+window.transitionToPage = function(href) {
+  document.querySelector('body').style.opacity = 0
+  setTimeout(function() { 
+      window.location.href = href
+  }, 0)
+}
+
 document.addEventListener('DOMContentLoaded', function(event) {
     document.querySelector('body').style.opacity = 1
 })

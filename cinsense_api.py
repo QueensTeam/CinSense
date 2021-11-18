@@ -1,16 +1,11 @@
-from flask import Flask, render_template, request, jsonify, make_response
+from flask import request, jsonify
 import requests
-import mysql.connector
-import uuid
 from dotenv import load_dotenv
 import os
 from hashlib import sha256
 import pymysql
-import json
 import jwt
-from datetime import datetime, timedelta, timezone
 from functools import wraps
-from flask_jwt_extended import create_access_token, get_jwt_identity, JWTManager, get_jwt, jwt_required, set_access_cookies, unset_access_cookies
 
 load_dotenv()
 
@@ -33,11 +28,19 @@ def getFilteredMovies(page, genre):
 def getGenres():
     response = requests.get("https://api.themoviedb.org/3/genre/movie/list?api_key=" + os.environ.get('TMDB_API_KEY') + "&language=en-US")
 
+def getIMDBid(id):
+    link = "https://api.themoviedb.org/3/movie/" + str(id) + "/external_ids?api_key=" + os.environ.get('TMDB_API_KEY')  + "&language=en-US"
+    response = requests.get(link)
+    return response.json()['imdb_id']
+
 def connectToDB():
     connection = pymysql.connect(host='localhost', user='root', password='', database='cinsense', charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
     return connection
     
 def registerUser(login, email, password):
+    print (login)
+    print (email)
+    print (password)
     conn = connectToDB()
     cursor = conn.cursor()
     if (checkUsernameUniqueness(login) == 0):

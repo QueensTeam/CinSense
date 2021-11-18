@@ -54,6 +54,10 @@ def register():
 def getMovie(id):
     return ca.getOneMovie(id)
 
+@app.route("/imdb/<id>")
+def getImdb(id):
+    return "http://www.imdb.com/title/" + ca.getIMDBid(id)
+
 @app.route('/login', methods = ['POST'])
 def login():
     auth = request.form
