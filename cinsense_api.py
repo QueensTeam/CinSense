@@ -6,41 +6,54 @@ from hashlib import sha256
 import pymysql
 import jwt
 from functools import wraps
+import random
 
 load_dotenv()
 
-def getAllMovies(page, genre=None):
+genres = ["28a", "12a", "16a", "35a", "99a", "18a", "14a", "27a", "10402a", "10749a", "878a", "53a"]
+decades = ["1910a", "1920a", "1930a", "1940a", "1950a", "1960a", "1970a", "1980a", "1990a", "2000a", "2010a", "2020a"] 
+avgvotes = ["0a", "6a", "8a"]
+votecnts = ["5000a", "10000a", "50000a"]
+
+def getAllMovies(page, filter=None):
     link = "https://api.themoviedb.org/3/discover/movie?api_key=" + os.environ.get('TMDB_API_KEY') + "&sort_by=popularity.desc&page=" + str(page)
-    if genre:
-        link += "&with_genres=" + str(genre)
+    if filter:
+        for dec in decades:
+            if dec in filter: link += "&release_date.gte=" + dec[:-1] + "&release_date.lte=" + str(int(dec[:-1]) + 9)
+        for avg in avgvotes:
+            if avg in filter:
+                if avg == "0a": link += "&vote_average.lte=6&vote_average.gte=0"
+                elif avg == "6a": link += "&vote_average.gte=6&vote_average.lte=8"
+                elif avg == "8a": link += "&vote_average.gte=8"
+        for cnt in votecnts:
+            if cnt in filter:
+                if cnt == "5000a": link +="&vote_count.gte=0&vote_count.lte=5000"
+                elif cnt == "10000a": link += "&vote_count.gte=5000&vote_count.lte=10000"
+                elif cnt == "50000a": link += "&vote_count.gte=50000"
+        for genre in genres:
+            if genre in filter: link += "&with_genres=" + str(genre[:-1])   
     response = requests.get(link)
     return response.json()
 
 def getOneMovie(id): 
-    link = "https://api.themoviedb.org/3/movie/" + str(id) + "?api_key=" + os.environ.get('TMDB_API_KEY')  + "&language=en-US"  
-    response = requests.get(link)
+    response = requests.get("https://api.themoviedb.org/3/movie/" + str(id) + "?api_key=" + os.environ.get('TMDB_API_KEY')  + "&language=en-US")
     return response.json()
-
-def getFilteredMovies(page, genre):
-    response = requests.get("https://api.themoviedb.org/3/discover/movie?api_key=" + os.environ.get('TMDB_API_KEY') + "&sort_by=popularity.desc&page=" + str(page) + "&with_genres=" + str(genre))
-    return response.json()
-
-def getGenres():
-    response = requests.get("https://api.themoviedb.org/3/genre/movie/list?api_key=" + os.environ.get('TMDB_API_KEY') + "&language=en-US")
 
 def getIMDBid(id):
     link = "https://api.themoviedb.org/3/movie/" + str(id) + "/external_ids?api_key=" + os.environ.get('TMDB_API_KEY')  + "&language=en-US"
     response = requests.get(link)
     return response.json()['imdb_id']
 
+def getRandomMovie():
+    rand = random.randint(0, 20)
+    return getAllMovies(1)['results'][rand]
+
 def connectToDB():
     connection = pymysql.connect(host='localhost', user='root', password='', database='cinsense', charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
     return connection
     
 def registerUser(login, email, password):
-    print (login)
-    print (email)
-    print (password)
+    print (login + " " + email + " " + password)
     conn = connectToDB()
     cursor = conn.cursor()
     if (checkUsernameUniqueness(login) == 0):

@@ -571,9 +571,6 @@ body {
 }
 
 /*the roulette*/
-.lpic{
-	display:none;
-}
 section.list{
 	margin: 2%;
 	text-align: center;
@@ -582,9 +579,7 @@ section.list span{
 	display:block;
 	text-align:center;
 }
-.ltitle{
-	display:none;
-	/*font-family:"Segoe UI", sans-serif;*/
+.ltitle{	/*font-family:"Segoe UI", sans-serif;*/
 	font-family:Antonio;
 	font-size:150%;
 	text-transform: uppercase;

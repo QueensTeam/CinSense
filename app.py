@@ -1,14 +1,8 @@
 from flask import Flask, render_template, request, jsonify, make_response
-import requests
-import mysql.connector
 from dotenv import load_dotenv
 import os
-import pymysql
 import json
-import jwt
-from datetime import datetime, timedelta, timezone
-from functools import wraps
-from flask_jwt_extended import create_access_token, get_jwt_identity, JWTManager, get_jwt, jwt_required, set_access_cookies, unset_access_cookies
+from flask_jwt_extended import create_access_token, get_jwt_identity, JWTManager, jwt_required
 import cinsense_api as ca
 
 load_dotenv()
@@ -37,13 +31,18 @@ def recommend():
     return render_template("recommend.html")
 
 @app.route("/getAll/<page>")
-@app.route("/getAll/<genre>/<page>/")
-def getAll(page, genre=None):
-    if genre:
-        movies = json.dumps(ca.getAllMovies(page, genre)["results"])
+@app.route("/getAll/<filter>/<page>/")
+def getAll(page, filter=None):
+    if filter:
+        print(filter)
+        movies = json.dumps(ca.getAllMovies(page, filter)["results"])
     else: 
         movies = json.dumps(ca.getAllMovies(page)["results"])
     return movies
+
+@app.route("/randomovie", methods = ['GET'])
+def randomMovie():
+    return ca.getRandomMovie()
 
 @app.route("/register",methods = ['POST'])
 def register():
