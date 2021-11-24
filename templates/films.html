@@ -8,6 +8,9 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/2cd86d0939.js" crossorigin="anonymous"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../static/css/style.css">
@@ -77,10 +80,11 @@
 				</div>
 			</div>
 		</section>
-		<p id="filterSecText">Filter:</p>
-		<section class="moviefilters col-11 col-sm-11 col-md-11 col-lg-9">
+		
+		<section class="moviefilters col-12 col-sm-12 col-md-12 col-lg-9">
+			<p id="filterSecText">Filter:</p>
 			<form action="">
-				<div>
+				<div class="col-4 col-sm-4 col-lg-2">
 	    		<label for="genre">Genre</label>
 	    		<select id="genre" name="Genre">
 	    			<option value="">-</option>
@@ -97,7 +101,7 @@
 		    	  	<option value="878">Science Fiction</option>
 		      		<option value="53">Thriller</option>
 	    		</select></div>
-	    		<div>
+	    		<div class="col-4 col-sm-4 col-lg-2">
 			    <label for="Decade">Decade</label>
 	    		<select id="decade" name="decade">
 	    			<option value="">-</option>
@@ -114,7 +118,7 @@
 		    	  	<option value="2010">2010s</option>
 		      		<option value="2020">2020s</option>
 	    		</select></div>
-	    		<div>
+	    		<div class="col-4 col-sm-4 col-lg-2">
 	    		<label for="average">Vote average</label>
 	    		<select id="average" name="average">
 	    			<option value="">-</option>
@@ -122,7 +126,7 @@
 		    	  	<option value="6">6-8</option>
 		      		<option value="8">>8</option>
 	    		</select></div>
-	    		<div>
+	    		<div class="col-4 col-sm-4 col-lg-2">
 	    		<label for="votecount">Vote count</label>
 	    		<select id="votecount" name="votecount">
 	    			<option value="">-</option>
@@ -132,19 +136,25 @@
 	    		</select></div>
 	  
 	    	<input onclick="searchForMovies()" type="ok" value="OK" id="okbutton">
+	    	<input onclick="location.href='films.html';" type="reset" value="RESET" id="resetbutton">
 	  		</form>
+
+		
 			<!-- <div id="filter1" class="">.</div>
 			<div id="filter2" class="">.</div>
 			<div id="filter3" class="">.</div>
 			<div id="filter4" class="">.</div>
 			<div id="okbutton" class="">OK</div> -->
 		</section>
-
+		<div id="noMoviesHeader" class="dontshow">No movies were found</div>
 		<section class="photogallery col-11 col-sm-11 col-md-11 col-lg-9">
+			
 			<div id = "activeMovie"></div>
 			<div id = "gallery"></div>
 			<div class = "loader"></div>
+
 		</section>
+
 	</div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>	

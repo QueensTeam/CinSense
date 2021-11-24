@@ -40,8 +40,14 @@ const hasMoreMovies = (page, total) => {
 };
 
 const addMovies = (movies) => {
+  var noMoviesHeader = document.getElementById("noMoviesHeader");
   mv = JSON.parse(movies);
   mv.forEach(addMovie);
+  if (mv.length === 0){
+    if(noMoviesHeader.classList.contains("dontshow")){
+        noMoviesHeader.classList.remove("dontshow");
+       }
+  }
 };
 
 function searchForMovies(){
@@ -49,6 +55,7 @@ function searchForMovies(){
   var decade = document.getElementById("decade").value;
   var voteavg = document.getElementById("average").value;
   var votecnt = document.getElementById("votecount").value;
+  // var noMoviesHeader = document.getElementById("noMoviesHeader");
   console.log(genre + " " + decade + " " + voteavg + " " + votecnt);
   url = "/getAll/";
   document.getElementById("gallery").innerHTML = "";
@@ -60,6 +67,11 @@ function searchForMovies(){
   console.log(currentPage);
   console.log(url);
   currentUrl = url;
+  // if (!url){
+  //    if(noMoviesHeader.classList.contains("dontshow")){
+  //       noMoviesHeader.classList.remove("dontshow");
+  //      }
+  // }
   loadMovies(currentPage, url);
 }
 
@@ -72,7 +84,8 @@ function addMovie(value){
   }
 }
 const loadMovies = async (page, url) => {
-  try {
+  try { 
+    
     console.log(url);
     const response = await $.get(url + page);
     console.log(response);
