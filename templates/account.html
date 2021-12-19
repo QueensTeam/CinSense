@@ -22,10 +22,21 @@
 		<a class="simple active" href="./account.html"><span data-hover="Account">Account</span></a>
 		<a class="simple" href="./about.html"><span data-hover="About">About</span></a>
 	</nav>
+	<!-- <div id="changeUserStateButton" onclick="changeUserState()" class="">Press to change the view</div> -->
 <div id="userStateOffline">
 		<a href="./account.html" class=offlineTitle>you are offline</a>
 		<a href="./account.html" class=offlineComment>login or register!</a>
-	</div></header>
+	</div>
+	
+	<div id="userStateOnline" class="dontshow">
+				<a href="./account.html" class=onlineTitle>you are online</a>
+				<a href="./account.html" class=onlineComment>log out</a>
+			</div>
+	</header>
+
+
+	
+	
 	<nav class="navbar mb-4">
 	  <a class="navbar-brand simple" href="./index.html">Home</a>
 	  <button class="navbar-toggler first-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent20"
@@ -86,7 +97,7 @@
  			</form>
 		</div>
 	</section>
-	<section class="onlineUser dontshow">
+	<section id="userStateOnline" class="onlineUser dontshow">
 		<div id="profileForm" class="col-12 col-lg-9">
 			
   			<form action="/">

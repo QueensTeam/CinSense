@@ -8,6 +8,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Antonio:wght@100&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Karantina:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
 body{ 
 	background-color:#FFF0F5;
 	background-color:white;
@@ -892,6 +895,27 @@ h1 #title {
 .offlineUser{
 	margin:5% auto;
 }
+
+#changeUserStateButton{
+	left:3%;
+	position:absolute;
+	top:95%;
+	color:black;
+	/*font-style: italic;*/
+	background-color:#fc0;
+	/*font-weight:700;*/
+	border-radius:5px;
+	border:none;
+	padding:0.2%;
+	/*font-family: "Segoe UI";*/
+	font-family: 'Bebas Neue';
+}
+#changeUserStateButton:hover {
+	cursor:pointer;
+	background-color:black;
+	color:white;
+}
+
 input[type=text], input[type=password], input[type=date]{
   width: 100%;
   padding: 3px 10px;
@@ -1021,19 +1045,23 @@ input[type=submit]:hover, #registerButton:hover, #loginButton:hover {
     z-index:0;
 }
 .activeContainer{
-	position:fixed;
+	/*position:fixed;*/
 	display:block;
-	z-index:100;
-	top:50%;
-	left:50%;
-	transform: translate(-50%, -50%);
-	background-color: #f2f2f2;
+	/*z-index:100;*/
+	/*top:50%;*/
+	/*left:50%;*/
+	/*transform: translate(-50%, -50%);*/
+	/*background-color: #f2f2f2;*/
 	/*background-color: hsl(45deg 24% 87%);*/
 	/*background-color: red;*/
-	margin:0 auto;
+	/*margin:2% 10%;*/
+	text-align:center;
 	padding:0;
+	margin:2% auto;
+	/*border-left: 5px solid black;*/
+	/*border-right: 5px solid black;*/
 	/*border: 2px solid #C02323;*/
-	border: 2px solid black;
+	/*border: 2px solid black;*/
 }
 .movieInfo{
 	/*padding:10%;*/
@@ -1059,6 +1087,7 @@ input[type=submit]:hover, #registerButton:hover, #loginButton:hover {
 	text-shadow: 2px 2px 2px #e6e2d6;
 	/*margin:0.5%;*/
 }
+
 #movieSummary{
 	display:block;
 	text-align:center;
@@ -1074,16 +1103,30 @@ input[type=submit]:hover, #registerButton:hover, #loginButton:hover {
 .activeContainer img{
 	float:left;
 }
-.fa-times{
+.fa-times, #backButton{
 	/*float:right;*/
 	position:absolute;
 	top:1%;
 	/*float:right;*/
 	left:95%;
-	color:black;
+	color: black;
+	/*text-shadow: 1px 1px 1px black;*/
 	/*color:white;*/
-	font-size:30px;
+	font-size:17px;
+	font-family: "Anton", 'Roboto Condensed', sans-serif;
+
+	/*font-weight: 700;*/
+
 	/*font-weight: 100;*/
+}
+
+#backButton:hover {
+	text-decoration: none;
+	/*opacity: 0.8;*/
+	/*color:black;*/
+	text-shadow: 2px 1px 1px black;
+	color:#fc0;
+
 }
 
 .smallersec .fas{
@@ -1145,7 +1188,7 @@ input[type=submit]:hover, #registerButton:hover, #loginButton:hover {
   text-align:center;
   /*width:10em;*/
   margin:0 auto;
-  margin-right:3%;
+  margin-right:5%;
 }
 
 .star-rating input {
@@ -1173,9 +1216,9 @@ input[type=submit]:hover, #registerButton:hover, #loginButton:hover {
 	text-align:center;
 }
 
-#movieVoteAverage, #movieVoteCount{
-	text-align:left;
-	margin-left:1%;
+#movieVoteAverage, #movieVoteCount, #tmdbLogo{
+	text-align:center;
+	/*margin-left:1%;*/
 	display:block;
 	margin-bottom:0;
 	padding-bottom:0;
@@ -1200,17 +1243,22 @@ input[type=submit]:hover, #registerButton:hover, #loginButton:hover {
 	opacity:0.7;
 }
 #tmdbInfo {
-	margin:0 0 0 65%;
+	/*margin:0 0 0 65%;*/
+	float:right;
+	margin-right:5%;
 	display:block;
 	text-align:center;
 	/*border: 2px solid black;*/
 }
+#movieVoteCount{
+	font-size: 10px;
+}
 
 #uncheckedWatchlist, #checkedWatchlist, #checkedSeen, #uncheckedSeen{
 	font-size:40px;
-	color:#ccc;
+	color:black;
 	/*-webkit-text-stroke: 0.4px 1px black;*/
-	text-shadow:1px 1px 1px black;
+	/*text-shadow:1px 1px 1px black;*/
 	/*color:	#e6e2d6;*/
 	text-align:left;
 	margin:2%;
@@ -1218,10 +1266,12 @@ input[type=submit]:hover, #registerButton:hover, #loginButton:hover {
 #uncheckedWatchlist:hover, #checkedWatchlist:hover, #checkedSeen:hover, #uncheckedSeen:hover{
 	cursor:pointer;
 	color:#fc0;
+	text-shadow:1px 1px 1px black;
 }
 #checkedSeen, #checkedWatchlist{
 	
 	color:#f90;
+	text-shadow:1px 1px 1px black;
 	/*color:red;*/
 }
 body{

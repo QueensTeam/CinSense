@@ -6,6 +6,7 @@ let totalMovies = 0;
 let currentUrl = "/getAll/";
 let defaultUserState = "offline";
 
+
 $(document).ready(function () {
   if (document.contains(gallery)) loadMovies(currentPage, currentUrl);
   $('.first-button').on('click', function () {
