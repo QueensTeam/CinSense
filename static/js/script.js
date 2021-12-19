@@ -133,6 +133,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
 })
 
 const randomovie = async() => {
+  var lem = document.getElementById("lemon");
+    var lem2 = document.getElementById("lemon2");
+     lem.classList.add("closed");
+  lem2.classList.add("oplem");
    try {
 
      response = await $.get("http://127.0.0.1:5000/randomovie");
@@ -142,8 +146,8 @@ const randomovie = async() => {
      imdb = await $.get("/imdb/" + response.id);
      if (response.hasOwnProperty('release_date')) release_year = response.release_date.substring(0, 4);
     else release_year = "-";
-    $("#recommendation").append( `<div onclick="transitionToPage('` + imdb + `')"> <p class="ltitle">` + response.title + ` (` + release_year + `)</p>
-     <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2` + response.poster_path + `" alt="" title="` + response.title + ` (` + response.release_year + `)" class="col-12  col-lg-5 lpic"/></div>`);
+    $("#recommendation").append( `<div class="col-12 col-lg-9 recMov" onclick="transitionToPage('` + imdb + `')"> <p class="ltitle">` + response.title + ` (` + release_year + `)</p>
+     <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2` + response.poster_path + `" alt="" title="` + response.title + ` (` + response.release_year + `)" class="col-12  col-lg-3 lpic"/></div>`);
    }
    catch (error) {console.log(error);}
    finally{}

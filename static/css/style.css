@@ -598,14 +598,21 @@ section.list span{
 	text-transform: uppercase;
 	margin:2px;
 	padding:2px;
-	background:#222;
-	color:white;
+	/*background:#222;*/
+	/*color:white;*/
+	color:black;
 	width:40%;
 	cursor:pointer;
 	margin:2px auto 2px auto;
 	cursor:pointer;
 }
-
+.recMov{
+	margin:0 auto;
+	text-align: center;
+}
+.lpic:hover{
+	cursor:pointer;
+}
 .randomovie1 i.fa-crown, .randomovie2 i.fa-crown{
 	font-size:1500%;
 	text-align:center;
