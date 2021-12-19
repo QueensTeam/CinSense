@@ -60,9 +60,9 @@
 	    </ul>
 	  </div>
 	</nav>
+
 	<section class="offlineUser col-12 col-lg-9">
-		<!-- <div></div> -->
-		<!-- <div></div> -->
+
 		<h1 id="beatle">Offline User Detected</h1>
 		<p class="seethrough">you need to login or register in order to access this page</p>
 		<div id="registerButton" onclick="openRegister()">Register</div>
@@ -70,14 +70,17 @@
 		<div id="registerForm" class="col-12 col-lg-4 dontshow">
 			
   			<form action="/register" method = "POST" enctype="multipart/form-data">
+
+  				<label class="errorMessage dontshow">Registration details incorrect or the user is already registered</label>
+
    				<label for="username">Username</label>
-  		  		<input type="text" id="registration_username" name="Username" placeholder="Your username">
+  		  		<input type="text" id="registration_username" name="Username" placeholder="Your username"required>
 
     			<label for="email">Email</label>
-    			<input type="text" id="registration_email" name="email" placeholder="Your email">
+    			<input type="text" id="registration_email" name="email" placeholder="Your email" required>
 
     			<label for="password">Password</label>
-   				<input type="password" id="registration_password" name="password" placeholder="Your password">
+   				<input type="password" id="registration_password" name="password" placeholder="Your password" required>
   
     			<input type="submit" value="Register">
     			<label for="login" onclick="openLogin()" class="right1">Login instead</label>
@@ -86,38 +89,80 @@
 		<div id="loginForm" class="col-12 col-lg-4 dontshow">
 
   			<form action="">
+  				<label class="errorMessage dontshow">Login details are incorrect</label>
    				<label for="username">Username/Email</label>
-  		  		<input type="text" id="username" name="Username" placeholder="Your username or email">
+  		  		<input type="text" id="username" name="Username" placeholder="Your username or email" required>
 
     			<label for="password">Password</label>
-   				<input type="password" id="password" name="password" placeholder="Your password">
+   				<input type="password" id="password" name="password" placeholder="Your password" required>
   
     			<input type="submit" value="Login">
     			<label for="login" onclick="openRegister()" class="right1">Register instead</label>
  			</form>
 		</div>
 	</section>
-	<section id="userStateOnline" class="onlineUser dontshow">
+	<section id="" class="onlineUser dontshow">
 		<div id="profileForm" class="col-12 col-lg-9">
 			
   			<form action="/">
-  				<input type="image" id="userImage" src="../static/img/drew.jpg" alt="Image Submission" width="150" height="150" class="rounded-circle">
+  				<div class="image-upload">
+	  				<label for="userImage">
+	   				 <img 
+	   				 id="userImageFt" src="../static/img/drew.jpg" alt="Image Submission" width="150" height="150" class="rounded-circle" title="Upload your own image"/>
+	 				 </label>
+
+	 				 <input id="userImage" type="file" accept="image/png, image/jpg"/>
+				</div>
 
    				<label for="username">Username</label>
-  		  		<input type="text" id="username" name="Username" placeholder="Your username">
+  		  		<input type="text" id="username" name="Username" placeholder="Your username" required>
 
     			<label for="email">Email</label>
-    			<input type="text" id="email" name="email" placeholder="Your email">
-
-    			<label for="birthday">Birthday</label>
-				<input type="date" id="birthday" name="birthday">
+    			<input type="text" id="email" name="email" placeholder="Your email" required>
 
     			<label for="password">Password</label>
-   				<input type="password" id="password" name="password" placeholder="Your password">
+   				<input type="password" id="password" name="password" placeholder="Your password" required>
   
+    			<input type="" value="Delete" id=deleteButton>
     			<input type="submit" value="Save" id=saveButton>
  			</form>
 		</div>
+		<div id=userMovies class="col-12 col-lg-6">
+			<div id="decUserMovBord"> </div>
+			<div><p class="userMovieTitle">Recent watchlist</p>
+				<span onclick="transitionToPage('https://www.imdb.com/title/tt0056801/?ref_=nv_sr_srsg_4')">
+			<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/9wvOlM8f3obvG9tNTkpZvF0CUU1.jpg" alt="" title="8 1/2 (1963)" class="col-12 col-lg-2 mov"/></span>
+			<span onclick="transitionToPage('https://www.imdb.com/title/tt0088680/?ref_=nv_sr_srsg_0')">
+			<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/1mh5QtpNYpHp3SQ2Bkj4dnmX0bA.jpg" alt="" title="After Hours (1985)" class="col-12  col-lg-2 mov"/>
+			</span>
+			<span onclick="transitionToPage('https://www.imdb.com/title/tt0067961/?ref_=fn_al_tt_2')">
+			<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/izuJ7cUhcihFnTpfsdSnkMCHsRQ.jpg" alt="" title="Wanda (1970)" class="col-12  col-lg-2 mov"/>
+			</span>
+			<span onclick="transitionToPage('https://www.imdb.com/title/tt0068327/?ref_=nv_sr_srsg_0')">
+			<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/1RmUfX3LcS897GhUWrWp5nRADo4.jpg" alt="" title="Cabaret (1972)" class="col-12 col-lg-2  mov"/>
+			</span>
+				</div>
+			<div><p class="userMovieTitle">Recently watched</p>
+				<span onclick="transitionToPage('https://www.imdb.com/title/tt0056801/?ref_=nv_sr_srsg_4')">
+			<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/9wvOlM8f3obvG9tNTkpZvF0CUU1.jpg" alt="" title="8 1/2 (1963)" class="col-12 col-lg-2 mov"/></span>
+			<span onclick="transitionToPage('https://www.imdb.com/title/tt0088680/?ref_=nv_sr_srsg_0')">
+			<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/1mh5QtpNYpHp3SQ2Bkj4dnmX0bA.jpg" alt="" title="After Hours (1985)" class="col-12  col-lg-2 mov"/>
+			</span>
+			<span onclick="transitionToPage('https://www.imdb.com/title/tt0067961/?ref_=fn_al_tt_2')">
+			<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/izuJ7cUhcihFnTpfsdSnkMCHsRQ.jpg" alt="" title="Wanda (1970)" class="col-12  col-lg-2 mov"/>
+			</span>
+			<span onclick="transitionToPage('https://www.imdb.com/title/tt0068327/?ref_=nv_sr_srsg_0')">
+			<img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/1RmUfX3LcS897GhUWrWp5nRADo4.jpg" alt="" title="Cabaret (1972)" class="col-12 col-lg-2  mov"/>
+			</span>
+			</div>
+		</div>
+	</section>
+
+	<section id="deletedUser" class="col-12 col-lg-9 dontshow">
+		<h1 id="beatle">Account deleted</h1>
+		<p class="seethrough">you have deleted your account, but you are welcome to register again or login to your other account by reloading the page</p>
+		<!-- <div id="registerButton" onclick="openRegister()">Register</div>
+		<div id="loginButton" onclick="openLogin()">Login</div> -->
 	</section>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
